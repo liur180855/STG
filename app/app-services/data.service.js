@@ -9,14 +9,17 @@
  
         service.GetAll = GetAll;
         service.PostInfo = PostInfo;
- 
+		//GetAll();
         return service;
  
         function GetAll() {
-            return $http.get('/api/getAllHousing').then(handleSuccess, handleError);
+			console.log("GetAll");
+            return $http.get('/getAllHousing').then(handleSuccess, handleError);
         }
-        function PostInfo(_id) {
-            return $http.delete('/api/users/' + _id).then(handleSuccess, handleError);
+		
+        function PostInfo(house) {
+			console.log("PostInfo");
+            return $http.post('/api/data/' + "stuff").then(handleSuccess, handleError);
         }
  
         // private functions

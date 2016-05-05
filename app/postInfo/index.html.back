@@ -1,0 +1,27 @@
+<html>
+	<ul class="container">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Address</th>
+					<th>Email</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="vm.name"></td>
+					<td><input class="form-control" ng-model="vm.email"></td>
+					<td><button class="btn btn-primary" ng-click="vm.postInfo()">Post</td>
+				
+				</tr>
+				<tr ng-repeat = "house in houselist">
+					<td>{{house.name}}
+					</td>
+					<td>{{house.email}}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</ul>
+</html>

@@ -1,41 +1,16 @@
-<ul class="container">
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Address</th>
-				<th>Email</th>
-				<th>Number</th>
-				<th>Price</th>
-				<th>Wechat</th>
-				<th>Other Info</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><input class="form-control" ng-model="house.name"></td>
-				<td><input class="form-control" ng-model="house.email"></td>
-				<td><input class="form-control" ng-model="house.number"></td>
-				<td><input class="form-control" ng-model="house.price"></td>
-				<td><input class="form-control" ng-model="house.wechat"></td>
-				<td><input class="form-control" ng-model="house.otherInfo"></td>
-				<td><button class="btn btn-primary" ng-click="PostInfo()">Post</td>
-			
-			</tr>
-			<tr ng-repeat = "house in houselist">
-				<td>{{vm.name}}
-				</td>
-				<td>{{vm.email}}
-				</td>
-				<td>{{vm.number}}
-				</td>
-				<td>{{vm.price}}
-				</td>
-				<td>{{vm.wechat}}
-				</td>
-				<td>{{vm.otherInfo}}
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</ul>
+<h1>My Account</h1>
+<div class="form-container">
+    <form method="post">
+        <div class="form-group">
+            <label for="firstName">house</label>
+            <input type="text" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
+        </div>
+        <div class="form-group">
+            <label for="lastName">other</label>
+            <input type="text" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="vm.postInfo()">Post</button>
+        </div>
+    </form>
+</div>

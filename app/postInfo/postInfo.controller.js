@@ -1,26 +1,26 @@
 (function () { 
     angular
         .module('app')
-        .controller('postInfo.controller', Controller);
-
+        .controller('postInfo.IndexController', Controller);
 
 	function Controller(dataService) {
         var vm = this;
-        vm.user = null;
+        //vm.house = null;
+		//vm.houselist;
         vm.refresh = refresh;
         vm.postInfo = postInfo
 
 		function refresh() {
             // get current user
             console.log("refresh");
-            dataService.GetAll().then(function (user) {
-                vm = user;
+            dataService.GetAll().then(function (houselist) {
+                vm.houselist = houselist;
             });
         }
 		refresh();
 		function postInfo(){
 			console.log("post info");
-			dataService.PostInfo(house).then(function (user) {
+			dataService.PostInfo(vm.house).then(function () {
             });
 		};
     }
