@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="directoryApp">
+<head>
+    <meta charset="utf-8" />
+    <title>DFW Roomy</title>
+ 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="container">
+    <!-- header -->
+    <nav>
+        <ul class="nav nav-tabs">
+            <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
+            <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
+            <li ng-class="{active: activeTab === 'postInfo'}"><a ui-sref="postInfo">postInfo</a></li>
+        </ul>
+        
+    </nav>
+ 
+    <!-- main -->
+    <main ui-view></main>
+ 
+ 
+    <!-- external scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+ 
+    <!-- application scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
