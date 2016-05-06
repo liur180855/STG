@@ -13,5 +13,5 @@ router.use('/', function (req, res, next) {
 */
 // serve angular app files from the '/app' route
 router.use('/', express.static('app'));
- 
+
 module.exports = router;

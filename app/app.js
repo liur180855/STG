@@ -8,17 +8,17 @@
     function config($stateProvider, $urlRouterProvider) {
         // default route
         $urlRouterProvider.otherwise("/");
- 
+
         $stateProvider
             .state('home', {
                 url: '/',
                 template: '<h1>meow2</h1>',
 				data: { activeTab: 'home' }
             })
-            .state('account', {
-                url: '/account',
+            .state('findHouse', {
+                url: '/findHouse',
                 template: '<h1>meow1</h1>',
-				data: { activeTab: 'account' }
+				data: { activeTab: 'findHouse' }
             })
             .state('postInfo', {
                 url: '/postInfo',

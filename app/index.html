@@ -11,16 +11,15 @@
     <nav>
         <ul class="nav nav-tabs">
             <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home">Home</a></li>
-            <li ng-class="{active: activeTab === 'account'}"><a ui-sref="account">Account</a></li>
-            <li ng-class="{active: activeTab === 'postInfo'}"><a ui-sref="postInfo">postInfo</a></li>
+            <li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">Find House</a></li>
+            <li ng-class="{active: activeTab === 'postInfo'}"><a ui-sref="postInfo">Post Info</a></li>
         </ul>
         
     </nav>
- 
+
     <!-- main -->
     <main ui-view></main>
- 
- 
+
     <!-- external scripts -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
@@ -30,5 +29,6 @@
     <script src="app.js"></script>
 	<script src="app-services/data.service.js"></script>
 	<script src="postInfo/postInfo.controller.js"></script>
+	
 </body>
 </html>

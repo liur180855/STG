@@ -1,13 +1,13 @@
-<h1>My Account</h1>
+<h1>Post Info</h1>
 <div class="form-container">
     <form method="post">
         <div class="form-group">
-            <label for="firstName">house</label>
-            <input type="text" id="firstName" class="form-control" ng-model="vm.user.firstName" required />
+            <label for="address">address</label>
+            <input type="text" id="house.address" class="form-control" ng-model="vm.house.address" required />
         </div>
         <div class="form-group">
-            <label for="lastName">other</label>
-            <input type="text" id="lastName" class="form-control" ng-model="vm.user.lastName" required />
+            <label for="other">other</label>
+            <input type="text" id="house.other" class="form-control" ng-model="vm.house.other">
         </div>
         <div class="form-group">
             <button class="btn btn-primary" ng-click="vm.postInfo()">Post</button>

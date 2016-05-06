@@ -17,11 +17,17 @@
                 vm.houselist = houselist;
             });
         }
-		refresh();
+		//refresh();
 		function postInfo(){
 			console.log("post info");
-			dataService.PostInfo(vm.house).then(function () {
-            });
+			
+			console.log(vm.house.address);
+			if(vm.house.address !== undefined){
+				
+				dataService.PostInfo(vm.house).then(function () {
+				
+				});
+			}
 		};
     }
 })();
