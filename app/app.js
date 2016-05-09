@@ -17,8 +17,10 @@
             })
             .state('findHouse', {
                 url: '/findHouse',
-                template: '<h1>meow1</h1>',
-				data: { activeTab: 'findHouse' }
+                templateUrl: 'findHouse/index.html',
+                controller: 'findHouse.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'findHouse' }
             })
             .state('postInfo', {
                 url: '/postInfo',
