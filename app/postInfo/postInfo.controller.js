@@ -5,25 +5,16 @@
 
 	function Controller(dataService) {
         var vm = this;
-        //vm.house = null;
-		//vm.houselist;
-        vm.refresh = refresh;
         vm.postInfo = postInfo
 
-		function refresh() {
-            // get current user
-            console.log("refresh");
-            dataService.GetAll().then(function (houselist) {
-                vm.houselist = houselist;
-            });
-        }
-		//refresh();
 		function postInfo(){
 			console.log("post info");
 			
 			console.log(vm.house.address);
-			if(vm.house.address !== undefined){
-				
+			console.log(vm.house.maleRoommate);
+			console.log(vm.house.femaleRoommate);
+			console.log(vm.house.privShareBath);
+			if(vm.house.address !== undefined && vm.house.price !== undefined){
 				dataService.PostInfo(vm.house).then(function () {
 				
 				});

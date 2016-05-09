@@ -3,7 +3,42 @@
     <form method="post">
         <div class="form-group">
             <label for="address">address</label>
-            <input type="text" id="house.address" class="form-control" ng-model="vm.house.address" required />
+            <input type="text" id="house.address" class="form-control" ng-model="vm.house.address" placeholder="123 street name city state" required />
+        </div>
+        <!-- <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="house.city" class="form-control" ng-model="vm.house.city" required />
+        </div>
+        <div class="form-group">
+            <label for="state">state</label>
+            <input type="text" id="house.state" class="form-control" ng-model="vm.house.state" required />
+        </div> -->
+        <div class="form-group">
+            <label for="price">price</label>
+            <input type="text" id="house.price" class="form-control" ng-model="vm.house.price" placeholder="i.e 400" required />
+        </div>
+        <div class="checkbox">
+            <label for="maleRoommate">
+            <input type="checkbox" id="house.maleRoommate" ng-model="vm.house.maleRoommate"> maleRoommate</label>
+            <label for="femaleRoommate">
+            <input type="checkbox" id="house.femaleRoommate" ng-model="vm.house.femaleRoommate">femaleRoommate</label>
+        </div>
+        <!-- <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="house.roommateGender" data-toggle="dropdown" ng-model="vm.house.roommateGender">roommateGender<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                <li><a href="#">mixture</a></li>
+                <li><a href="#">male</a></li>
+                <li><a href="#">female</a></li>
+            </ul>
+        </div> -->
+
+        <div class="checkbox">
+            <label for="privShareBath">
+            <input type="checkbox" id="house.privShareBath" ng-model="vm.house.privShareBath"> privShareBath</label>
+        </div>
+        <div class="checkbox">
+            <label for="furnished">
+            <input type="checkbox" id="house.furnished" ng-model="vm.house.furnished"> furnished</label>
         </div>
         <div class="form-group">
             <label for="other">other</label>
