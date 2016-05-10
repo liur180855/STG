@@ -93,7 +93,3 @@ app.post('/postInfo', function(req,res){
 var server = app.listen(3000, function () {
     console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 44eda7b8b5c7812e29a36f35f3bf4b71a0d8aee6
