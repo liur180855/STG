@@ -78,8 +78,8 @@ app.post('/postInfo', function(req,res){
 	//update(req.body);
     geocodeParams.address = req.body.address;
     gmAPI.geocode(geocodeParams, function(err, result){
-        console.log(result);
-        //console.log(result.results[0].geometry.location);
+        
+        console.log(result.results[0].geometry.location.lat);
         req.body.location = result.results[0].geometry.location;
 
         db.HouseDB.insert(req.body,function(err,doc){

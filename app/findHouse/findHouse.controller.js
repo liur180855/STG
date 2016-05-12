@@ -11,10 +11,37 @@
 
 		function searchInfo(){
 			console.log("searchInfo");
-			console.log(vm.mySearch.address);
-            console.log(vm.mySearch.mile);
-			dataService.FindHouse(vm.mySearch.address).then(function () {
-            });
+            var circle = [];
+            if (vm.mySearch.address1 === undefined && vm.mySearch.address2 === undefined && vm.mySearch.address3 === undefined){
+                alert("enter something");
+            } else {
+                if (vm.mySearch.address1 !== undefined && Boolean(vm.mySearch.address1)){
+                    getGeocode(vm.mySearch.address1,function(location){
+                    console.log("callback called! " + location.lat());
+                    });
+                }
+                if (vm.mySearch.address2 !== undefined && Boolean(vm.mySearch.address2)){
+                    getGeocode(vm.mySearch.address2,function(location){
+                    console.log("callback called! " + location.lat());
+                    });
+                }
+                if (vm.mySearch.address3 !== undefined && Boolean(vm.mySearch.address3)){
+                    getGeocode(vm.mySearch.address3,function(location){
+                    console.log("callback called! " + location.lat());
+                    });
+                }
+
+            /*
+                getGeocode(vm.mySearch.address1,function(location){
+                    console.log("callback called! " + location.lat());
+                    addCircle(location.lat(),location.lng(),vm.mySearch.mile);
+
+                });
+                addCircle(vm.mySearch.address1,vm.mySearch.mile1);
+    			dataService.FindHouse(vm.mySearch).then(function () {
+                });
+                */
+            }
 		};
     }
 })();

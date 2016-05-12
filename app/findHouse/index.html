@@ -12,37 +12,45 @@
 <div class="form-container">
     <form method="post">
         <div class="form-group">
-            <label for="mySearch.address">Place around my work</label>
-            <input type="text" id="mySearch.address" class="form-control" ng-model="vm.mySearch.address" placeholder="123 street name city state" required />
-
-                    <!-- <li><a href="#">1 mile</a></li>
-                    <li><a href="#">2 miles</a></li>
-                    <li><a href="#">3 miles</a></li>
-                    <li><a href="#">5 mile</a></li>
-                    <li><a href="#">10 miles</a></li>
-                    <li><a href="#">15 miles</a></li>
-                    <li><a href="#">30 miles</a></li>
-                    <li><a href="#">50 miles</a></li> -->
-            <label for="mySearch.mile">Type of Business</label>
-            <select class="form-control" ng-init="vm.mySearch.mile = vm.mySearch.mile || '1'" ng-model="vm.mySearch.mile">
+            <label for="mySearch.address1">Place around my work</label>
+            <input type="text" id="mySearch.address1" class="form-control" ng-model="vm.mySearch.address1" placeholder="123 street name city state"/>
+            <label for="mySearch.mile1">Maximum distance away</label>
+            <select class="form-control" ng-init="vm.mySearch.mile1 = vm.mySearch.mile1 || '1'" ng-model="vm.mySearch.mile1">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="30">30</option>
             </select> 
+        </div>
 
+        <div class="form-group">
+            <label for="mySearch.address2">Place around my work</label>
+            <input type="text" id="mySearch.address2" class="form-control" ng-model="vm.mySearch.address2" placeholder="123 street name city state"/>
+            <label for="mySearch.mile2">Maximum distance away</label>
+            <select class="form-control" ng-init="vm.mySearch.mile2 = vm.mySearch.mile2 || '1'" ng-model="vm.mySearch.mile2">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="30">30</option>
+            </select> 
+        </div>
 
-            <!-- <div class="btn-group">
-                <label for="mySearch.mile">(required):</label>
-                <button type="button" class="form-control btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Select mile/s from this location<span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" id="mySearch.mile" ng-model="vm.mySearch.mile">
-                    <li><a href="#">small</a></li>
-                    <li><a href="#">medium</a></li>
-                    <li><a href="#">large</a></li>
-                </ul>
-            </div> -->
-
+        <div class="form-group">
+            <label for="mySearch.address3">Place around my work</label>
+            <input type="text" id="mySearch.address3" class="form-control" ng-model="vm.mySearch.address3" placeholder="123 street name city state"/>
+            <label for="mySearch.mile3">Maximum distance away</label>
+            <select class="form-control" ng-init="vm.mySearch.mile3 = vm.mySearch.mile3 || '1'" ng-model="vm.mySearch.mile3">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="30">30</option>
+            </select> 
         </div>
         <div class="form-group">
             <button class="btn btn-primary" ng-click="vm.searchInfo()">Search</button>
