@@ -64,9 +64,9 @@ app.get('/getAllHousing',function(req,res){
 
 app.get('/findHouse',function(req,res){
     console.log("I received a GET request");
-
     db.HouseDB.find(function(err1,docs){
         console.log(docs);
+		
         res.json(docs);
     });
 });

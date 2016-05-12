@@ -12,14 +12,15 @@ function initMap() {
 }
 
 
-function getGeocode(address,callback) {
+function getGeocode(address,radius,callback) {
     geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        callback(results[0].geometry.location);
+		if (status == google.maps.GeocoderStatus.OK) {
+		  
+			callback(results[0].geometry.location,radius);
 
-      } else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
+		} else {
+			alert("Geocode was not successful for the following reason: " + status);
+		}
     });
 }
 
@@ -34,7 +35,7 @@ function deleteCircles() {
   circles = [];
 }
 
-function addCircle(location,miles) {
+function addCircle(lat,lng,miles) {
 	//deleteCircles();
     var circle = new google.maps.Circle({
         strokeColor: '#FF4500',
@@ -43,11 +44,26 @@ function addCircle(location,miles) {
         fillColor: '#FF4500',
         fillOpacity: 0.15,
         map: map,
-        center: location,
-        //center: { lat: parseFloat(lat), lng: parseFloat(lng)},
+        //center: location,
+        center: { lat: lat, lng:lng},
         radius: miles*1609.344
     });
-    //circles.push(circle);
+    circles.push(circle);
+}
+
+
+
+function getAllGeocodeThenAddCircle(addressArray){
+	deleteCircles();
+	var addressArrayLatLng = [];
+	for (var i=0;i<addressArray.length;i++){
+		console.log("callback called! " + addressArray[i].radius);
+		
+		getGeocode(addressArray[i].address,addressArray[i].radius,function(location,radius){
+			addressArrayLatLng.push({"lat":parseFloat(location.lat()),"lng":parseFloat(location.lng()),"radius":radius});
+            addCircle(parseFloat(location.lat()),parseFloat(location.lng()),radius);
+        });
+	}
 }
 /*
 google.maps.Circle.prototype.contains = function(latLng) {

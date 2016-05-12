@@ -11,26 +11,24 @@
 
 		function searchInfo(){
 			console.log("searchInfo");
-            var circle = [];
+            var addressArray = [];
             if (vm.mySearch.address1 === undefined && vm.mySearch.address2 === undefined && vm.mySearch.address3 === undefined){
                 alert("enter something");
             } else {
                 if (vm.mySearch.address1 !== undefined && Boolean(vm.mySearch.address1)){
-                    getGeocode(vm.mySearch.address1,function(location){
-                    console.log("callback called! " + location.lat());
-                    });
+					addressArray.push({"address":vm.mySearch.address1,"radius":vm.mySearch.mile1});
                 }
                 if (vm.mySearch.address2 !== undefined && Boolean(vm.mySearch.address2)){
-                    getGeocode(vm.mySearch.address2,function(location){
-                    console.log("callback called! " + location.lat());
-                    });
+					addressArray.push({"address":vm.mySearch.address2,"radius":vm.mySearch.mile2});
                 }
                 if (vm.mySearch.address3 !== undefined && Boolean(vm.mySearch.address3)){
-                    getGeocode(vm.mySearch.address3,function(location){
-                    console.log("callback called! " + location.lat());
-                    });
+					addressArray.push({"address":vm.mySearch.address3,"radius":vm.mySearch.mile3});
                 }
-
+				
+				console.log(addressArray);
+				getAllGeocodeThenAddCircle(addressArray);
+				dataService.FindHouse(addressArray).then(function () {
+                });
             /*
                 getGeocode(vm.mySearch.address1,function(location){
                     console.log("callback called! " + location.lat());
