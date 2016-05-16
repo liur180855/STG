@@ -18,10 +18,15 @@
             return $http.get('/getAllHousing').then(handleSuccess, handleError);
         }
 		
-        function FindHouse(location,callback) {
+        function FindHouse(addressArray,callback) {
 			console.log("FindHouse");
-			console.log(location);
-			return $http.get('/findHouse',location).then(handleSuccess, handleError);
+			console.log(addressArray);
+			//return $http.get('/findHouse',addressArray).then(handleSuccess, handleError);
+			return $http.get('/findHouse',{
+        	params: {
+	            addressArray: addressArray
+	        }
+    	}).then(handleSuccess, handleError);
             //return $http.post('/postInfo', house).then(handleSuccess, handleError);
         }
 		

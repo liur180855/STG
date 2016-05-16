@@ -24,11 +24,47 @@
                 if (vm.mySearch.address3 !== undefined && Boolean(vm.mySearch.address3)){
 					addressArray.push({"address":vm.mySearch.address3,"radius":vm.mySearch.mile3});
                 }
-				
+
+
+
+
+/*
+				var promise = new Promise(function(resolve, reject) {
+                  resolve(1);
+                });
+
+                promise.then(function(val) {
+                  console.log(val); // 1
+                  return val + 2;
+                }).then(function(val) {
+                  console.log(val); // 3
+                });
+
+
+
+                var promise = new Promise(function(resolve, reject) {
+                  resolve(getAllGeocodeThenAddCircle(addressArray));
+                });
+
+                function shitter(val) {
+                  console.log(val); // 1
+                  return val;
+                }
+
+                promise(addressArray).then(shitter).then(function(val) {
+                  console.log(val); // 3
+                });
+
+*/
+
 				console.log(addressArray);
 				getAllGeocodeThenAddCircle(addressArray);
 				dataService.FindHouse(addressArray).then(function () {
                 });
+
+                
+
+
             /*
                 getGeocode(vm.mySearch.address1,function(location){
                     console.log("callback called! " + location.lat());

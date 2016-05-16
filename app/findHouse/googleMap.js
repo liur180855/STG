@@ -64,6 +64,7 @@ function getAllGeocodeThenAddCircle(addressArray){
             addCircle(parseFloat(location.lat()),parseFloat(location.lng()),radius);
         });
 	}
+    return "hey there"
 }
 /*
 google.maps.Circle.prototype.contains = function(latLng) {

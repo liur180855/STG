@@ -22,13 +22,7 @@ var publicConfig = {
 var gmAPI = new GoogleMapsAPI(publicConfig);
 
 // geocode API
-var geocodeParams = {
-  "address":    "",
-  "components": "",
-  "bounds":     "",
-  "language":   "",
-  "region":     ""
-};
+
 
 
 
@@ -64,11 +58,30 @@ app.get('/getAllHousing',function(req,res){
 
 app.get('/findHouse',function(req,res){
     console.log("I received a GET request");
-    db.HouseDB.find(function(err1,docs){
-        console.log(docs);
-		
-        res.json(docs);
-    });
+    /*
+    var geocodeParams = {
+	  "address":    "",
+	  "components": "",
+	  "bounds":     "",
+	  "language":   "",
+	  "region":     ""
+	};
+
+
+
+	geocodeParams.address = req.body.address;
+	*/
+	
+	    db.HouseDB.find(function(err1,docs){
+
+
+
+	    	console.log(req.query);
+	        console.log(docs);
+			
+	        res.json(docs);
+	    });
+
 });
 
 app.post('/postInfo', function(req,res){
@@ -76,10 +89,17 @@ app.post('/postInfo', function(req,res){
 	console.log("I received a POST request");
 	console.log(req.body);
 	//update(req.body);
+	var geocodeParams = {
+	  "address":    "",
+	  "components": "",
+	  "bounds":     "",
+	  "language":   "",
+	  "region":     ""
+	};
     geocodeParams.address = req.body.address;
     gmAPI.geocode(geocodeParams, function(err, result){
         
-        console.log(result.results[0].geometry.location.lat);
+        //console.log(result.results[0].geometry.location.lat);
         req.body.location = result.results[0].geometry.location;
 
         db.HouseDB.insert(req.body,function(err,doc){
