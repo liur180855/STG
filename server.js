@@ -12,6 +12,20 @@ var db = mongojs('HouseDB',['HouseDB']);
 var GoogleMapsAPI = require('googlemaps');
 
 
+/*
+
+
+
+*/
+var Pokemon = require('emailSender');
+var pokemon = new Pokemon('Piakchu', 99);
+
+// OCD
+var age = pokemon.get_age();
+console.log(pokemon.get_name() + ' is ' + age + ' year' + (age == 1? '': 's') + ' old');
+
+
+
 var publicConfig = {
   key: 'AIzaSyAcQ5EICDJHpfIs1e4GKFN-VfwbWtzGVB4',
   stagger_time:       1000, // for elevationPath
