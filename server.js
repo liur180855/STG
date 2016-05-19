@@ -71,7 +71,7 @@ app.get('/findHouse',function(req,res){
 
 	geocodeParams.address = req.body.address;
 	*/
-	
+
 	    db.HouseDB.find(function(err1,docs){
 
 
@@ -87,7 +87,7 @@ app.get('/findHouse',function(req,res){
 app.post('/postInfo', function(req,res){
 	
 	console.log("I received a POST request");
-	console.log(req.body);
+	
 	//update(req.body);
 	var geocodeParams = {
 	  "address":    "",
@@ -98,8 +98,8 @@ app.post('/postInfo', function(req,res){
 	};
     geocodeParams.address = req.body.address;
     gmAPI.geocode(geocodeParams, function(err, result){
-        
-        //console.log(result.results[0].geometry.location.lat);
+        console.log(req.body);
+        console.log(result.results[0].geometry.location);
         req.body.location = result.results[0].geometry.location;
 
         db.HouseDB.insert(req.body,function(err,doc){
