@@ -11,17 +11,17 @@ var db = mongojs('HouseDB',['HouseDB']);
 
 var GoogleMapsAPI = require('googlemaps');
 
-
+console.log(config.smtp);
 /*
 
 
 
 */
 var emailSenderModule = require('emailSender');
-var emailSender = new emailSenderModule('smtps://dfwroomy%40gmail.com:1qaz2wsx3e@smtp.gmail.com');
+var emailSender = new emailSenderModule(config.smtp);
 
 
-emailSender.sendMail(emailSender.createMailOptions('"DFWRoomy" <dfwroomy@gmail.com>','liur180855@gmail.com','Hello 3',null,'<b>Hello world 2</b>'));
+emailSender.sendMail(emailSender.createMailOptions(config.from,'liur180855@gmail.com','DFWRoomy: Your House Info Is Posted',null, '<b>Hello world 2</b>'));
 
 
 
