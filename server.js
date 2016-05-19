@@ -17,12 +17,12 @@ var GoogleMapsAPI = require('googlemaps');
 
 
 */
-var Pokemon = require('emailSender');
-var pokemon = new Pokemon('Piakchu', 99);
+var emailSenderModule = require('emailSender');
+var emailSender = new emailSenderModule('smtps://dfwroomy%40gmail.com:1qaz2wsx3e@smtp.gmail.com');
 
-// OCD
-var age = pokemon.get_age();
-console.log(pokemon.get_name() + ' is ' + age + ' year' + (age == 1? '': 's') + ' old');
+
+emailSender.sendMail(emailSender.createMailOptions('"DFWRoomy" <dfwroomy@gmail.com>','liur180855@gmail.com','Hello 3',null,'<b>Hello world 2</b>'));
+
 
 
 
