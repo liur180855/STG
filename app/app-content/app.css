@@ -1,0 +1,16 @@
+body {
+    padding: 20px 0;
+}
+ 
+.flash-message {
+    margin-top: 20px;
+}
+
+.glyphicon {
+    font-size: 50px;
+}
+
+.navbar {
+    color: #4527A0;
+    background-color: #F57F17;
+}
