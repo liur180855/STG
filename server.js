@@ -16,14 +16,14 @@ var GoogleMapsAPI = require('googlemaps');
 
 
 
-*/
+
 var Pokemon = require('emailSender');
 var pokemon = new Pokemon('Piakchu', 99);
 
 // OCD
 var age = pokemon.get_age();
 console.log(pokemon.get_name() + ' is ' + age + ' year' + (age == 1? '': 's') + ' old');
-
+*/
 
 
 var publicConfig = {
@@ -112,11 +112,13 @@ app.post('/postInfo', function(req,res){
 	};
     geocodeParams.address = req.body.address;
     gmAPI.geocode(geocodeParams, function(err, result){
-        console.log(req.body);
-        console.log(result.results[0].geometry.location);
-        req.body.location = result.results[0].geometry.location;
-
-        db.HouseDB.insert(req.body,function(err,doc){
+        
+        //console.log(result.results[0].geometry.location);
+        //req.body.location = result.results[0].geometry.location;
+        var houseInfo = req.body;
+        houseInfo.location = result.results[0].geometry.location;
+        console.log(houseInfo);
+        db.HouseDB.insert(houseInfo,function(err,doc){
             res.json(doc);
         });
     });
