@@ -17,7 +17,7 @@ var emailSenderModule = require('emailSender');
 var emailSender = new emailSenderModule(config.smtp);
 
 
-emailSender.sendMail(emailSender.createMailOptions(config.from,'liur180855@gmail.com','DFWRoomy: Your House Info Is Posted',null, '<b>Hello world 2</b>'));
+//emailSender.sendMail(emailSender.createMailOptions(config.from,'liur180855@gmail.com','DFWRoomy: Your House Info Is Posted',null, '<b>Hello world 2</b>'));
 
 
 
