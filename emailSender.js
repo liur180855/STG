@@ -38,31 +38,48 @@ transporter.sendMail({
 
 */
 
+function emailSender(smtpsInfo){
+	this.transporter = nodemailer.createTransport(smtpsInfo);
+	console.log("work");
+	
+};
 
-// create reusable transporter object using the default SMTP transport
-var transporter = nodemailer.createTransport('smtps://dfwroomy%40gmail.com:1qaz2wsx3e@smtp.gmail.com');
+emailSender.prototype.createMailOptions = function(from, to, subject, text, body){
+	var mailOptions = {
+		from: from, // sender address
+		to: to, // list of receivers
+		subject: subject, // Subject line
+		text: text, // plaintext body
+		html: body // html body
+	};
+	return mailOptions;
+};
 
+emailSender.prototype.sendMail = function(mailOptions){
+	this.transporter.sendMail(mailOptions,function(error, info){
+		if(error){
+			return console.log(error);
+		}
+		console.log('Message sent: ' + info.response);
+	});
+}
+module.exports =emailSender;
+/*
 
-
-
+function emailSender(smtpsInfo){
+	this.transporter = nodemailer.createTransport('smtps://dfwroomy%40gmail.com:1qaz2wsx3e@smtp.gmail.com');
+	
+	
+}
 // setup e-mail data with unicode symbols
 var mailOptions = {
-    from: '"liur180855" <liur180855@gmail.com>', // sender address
-    to: '536762697@qq.com', // list of receivers
+    from: '"DFWRoomy" <dfwroomy@gmail.com>', // sender address
+    to: 'liur180855@gmail.com', // list of receivers
     subject: 'Hello 3', // Subject line
     text: 'Hello world 1', // plaintext body
     html: '<b>Hello world 2</b>' // html body
 };
 
-
-
-// send mail with defined transport object
-transporter.sendMail(mailOptions, function(error, info){
-    if(error){
-        return console.log(error);
-    }
-    console.log('Message sent: ' + info.response);
-});
 
 module.exports = function(name, age) {
 
@@ -77,3 +94,4 @@ module.exports = function(name, age) {
         return this.age;
     }
 };
+*/

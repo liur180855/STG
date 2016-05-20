@@ -1,5 +1,9 @@
 {
     "connectionString": "mongodb://localhost:27017/STG",
-    "apiUrl":  "http://localhost:3000/api"
+    "apiUrl":  "http://localhost:3000/api",
+	"smtp": "smtps://dfwroomy%40gmail.com:1qaz2wsx3e@smtp.gmail.com",
+    "from":  "DFWRoomy",
+    "successSubject":  "DFWRoomy: Your House Info Is Posted",
+    "successMessage":  "<b>Hello world 2</b>"
 }
  

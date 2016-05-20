@@ -11,11 +11,12 @@ var db = mongojs('HouseDB',['HouseDB']);
 
 var GoogleMapsAPI = require('googlemaps');
 
-
+console.log(config.smtp);
 /*
 
 
 
+<<<<<<< HEAD
 
 var Pokemon = require('emailSender');
 var pokemon = new Pokemon('Piakchu', 99);
@@ -24,6 +25,16 @@ var pokemon = new Pokemon('Piakchu', 99);
 var age = pokemon.get_age();
 console.log(pokemon.get_name() + ' is ' + age + ' year' + (age == 1? '': 's') + ' old');
 */
+=======
+*/
+var emailSenderModule = require('emailSender');
+var emailSender = new emailSenderModule(config.smtp);
+
+
+emailSender.sendMail(emailSender.createMailOptions(config.from,'liur180855@gmail.com','DFWRoomy: Your House Info Is Posted',null, '<b>Hello world 2</b>'));
+
+
+>>>>>>> c3a574007cd01b14b910ebec46e30af7890b4057
 
 
 var publicConfig = {
@@ -112,13 +123,11 @@ app.post('/postInfo', function(req,res){
 	};
     geocodeParams.address = req.body.address;
     gmAPI.geocode(geocodeParams, function(err, result){
-        
-        //console.log(result.results[0].geometry.location);
-        //req.body.location = result.results[0].geometry.location;
-        var houseInfo = req.body;
-        houseInfo.location = result.results[0].geometry.location;
-        console.log(houseInfo);
-        db.HouseDB.insert(houseInfo,function(err,doc){
+        console.log(req.body);
+        console.log(result.results[0].geometry.location);
+        req.body.location = result.results[0].geometry.location;
+
+        db.HouseDB.insert(req.body,function(err,doc){
             res.json(doc);
         });
     });
