@@ -10,6 +10,7 @@
         service.GetAll = GetAll;
         service.PostInfo = PostInfo;
 		service.FindHouse = FindHouse;
+		service.PostLookingHouseInfo = PostLookingHouseInfo;
 		//GetAll();
         return service;
 
@@ -34,6 +35,13 @@
 			console.log("PostInfo");
 			console.log(house);
 			return $http.post('/postInfo',house).then(handleSuccess, handleError);
+            //return $http.post('/postInfo', house).then(handleSuccess, handleError);
+        }
+
+		function PostLookingHouseInfo(house,callback) {
+			console.log("postLookingHouseInfo");
+			console.log(house);
+			return $http.post('/postLookingHouseInfo',house).then(handleSuccess, handleError);
             //return $http.post('/postInfo', house).then(handleSuccess, handleError);
         }
 

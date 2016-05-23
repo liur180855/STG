@@ -7,7 +7,8 @@ var Q = require('q');
 //var dataService = require('services/data.service');
 
 var mongojs=require('mongojs');
-var db = mongojs('HouseDB',['HouseDB']);
+var HouseDB = mongojs('HouseDB',['HouseDB']);
+var PostHouseDB = mongojs('PostHouseDB',['PostHouseDB']);
 
 var GoogleMapsAPI = require('googlemaps');
 
@@ -54,13 +55,10 @@ app.get('/', function (req, res) {
     return res.redirect('/app');
 });
 
-
-
-
 app.get('/getAllHousing',function(req,res){
 	console.log("I received a GET request");
 
-	db.HouseDB.find(function(err1,docs){
+	HouseDB.HouseDB.find(function(err1,docs){
 		console.log(docs);
 		res.json(docs);
 	});
@@ -82,7 +80,7 @@ app.get('/findHouse',function(req,res){
 	geocodeParams.address = req.body.address;
 	*/
 
-	    db.HouseDB.find(function(err1,docs){
+	    HouseDB.HouseDB.find(function(err1,docs){
 
 
 
@@ -112,11 +110,21 @@ app.post('/postInfo', function(req,res){
         console.log(result.results[0].geometry.location);
         req.body.location = result.results[0].geometry.location;
 
-        db.HouseDB.insert(req.body,function(err,doc){
+        HouseDB.HouseDB.insert(req.body,function(err,doc){
             res.json(doc);
         });
     });
     console.log(geocodeParams);
+});
+
+app.post('/postLookingHouseInfo', function(req,res){
+	
+	console.log("postLookingHouseInfo");
+        console.log(req.body);
+
+        PostHouseDB.PostHouseDB.insert(req.body,function(err,doc){
+            res.json(doc);
+        });
 });
 
 // start server

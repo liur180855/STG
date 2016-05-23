@@ -28,6 +28,34 @@
                 controller: 'postInfo.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'postInfo' }
+            })
+            .state('singleHouse', {
+                url: '/singleHouse',
+                templateUrl: 'singleHouse/index.html',
+                controller: 'singleHouse.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'singleHouse' }
+            })
+            .state('wholeHouse', {
+                url: '/wholeHouse',
+                templateUrl: 'wholeHouse/index.html',
+                controller: 'wholeHouse.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'wholeHouse' }
+            })
+            .state('findHousePost', {
+                url: '/findHousePost',
+                templateUrl: 'findHousePost/index.html',
+                controller: 'findHousePost.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'findHousePost' }
+            })
+            .state('tenantInfoPage', {
+                url: '/tenantInfoPage',
+                templateUrl: 'tenantInfoPage/index.html',
+                controller: 'tenantInfoPage.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'tenantInfoPage' }
             });
     }
 	

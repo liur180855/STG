@@ -1,0 +1,104 @@
+<h1>Single Room</h1>
+<div class="form-container">
+    <form method="post">
+        <div class="form-group">
+            <label for="address">address</label>
+            <input type="text" id="house.address" class="form-control" ng-model="vm.house.address" placeholder="123 street name city state" required />
+        </div>
+        <!-- <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="house.city" class="form-control" ng-model="vm.house.city" required />
+        </div>
+        <div class="form-group">
+            <label for="state">state</label>
+            <input type="text" id="house.state" class="form-control" ng-model="vm.house.state" required />
+        </div> -->
+        <div class="checkbox">
+            <label for="trafficInfo">
+            <input type="checkbox" id="house.trafficInfo" ng-model="vm.house.trafficInfo"> trafficInfo</label>
+        </div>
+        <div class="form-group">
+            <label for="price">price</label>
+            <input type="text" id="house.price" class="form-control" ng-model="vm.house.price" placeholder="i.e 400" required />
+        </div>
+        <div class="form-group">
+            <label for="house.utilityIncluded">utilityIncluded</label>
+            <select class="form-control" ng-init="vm.house.utilityIncluded = vm.house.utilityIncluded || 'none'" ng-model="vm.house.utilityIncluded">
+                <option value="all">all</option>
+                <option value="partial">partial</option>
+                <option value="none">none</option>
+            </select> 
+        </div>
+        <div class="form-group">
+            <label for="house.roommateGender">roommateGender</label>
+            <select class="form-control" ng-init="vm.house.roommateGender = vm.house.roommateGender || 'none'" ng-model="vm.house.roommateGender">
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="mix">mix</option>
+                <option value="none">none</option>
+            </select> 
+        </div>
+        <div class="form-group">
+            <label for="house.tenantGenderRestriction">tenantGenderRestriction</label>
+            <select class="form-control" ng-init="vm.house.tenantGenderRestriction = vm.house.tenantGenderRestriction || 'none'" ng-model="vm.house.tenantGenderRestriction">
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="none">none</option>
+            </select> 
+        </div>
+        <div class="form-group">
+            <label for="house.totalRoomate">totalRoomate</label>
+            <select class="form-control" ng-init="vm.house.totalRoomate = vm.house.totalRoomate || '0'" ng-model="vm.house.totalRoomate">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6+</option>
+            </select> 
+        </div>
+        <!-- <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="house.roommateGender" data-toggle="dropdown" ng-model="vm.house.roommateGender">roommateGender<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                <li><a href="#">mixture</a></li>
+                <li><a href="#">male</a></li>
+                <li><a href="#">female</a></li>
+            </ul>
+        </div> -->
+
+        <div class="form-group">
+            <label for="house.bathroom">bathroom</label>
+            <select class="form-control" ng-init="vm.house.bathroom = vm.house.bathroom || 'private'" ng-model="vm.house.bathroom">
+                <option value="private">private</option>
+                <option value="shareWithAnother">shareWithAnother</option>
+                <option value="shareWithThreePlus">shareWithThreePlus</option>
+            </select> 
+        </div>
+        <div class="checkbox">
+            <label for="furnished">
+            <input type="checkbox" id="house.furnished" ng-model="vm.house.furnished"> furnished</label>
+        </div>
+
+        <div class="form-group">
+            <label for="rentalTime">rentalTime</label>
+            <input type="text" id="house.rentalTime" class="form-control" ng-model="vm.house.rentalTime" required />
+        </div>
+
+        <div class="form-group">
+            <label for="contactInfo">contactInfo</label>
+            <input type="text" id="house.contactInfo" class="form-control" ng-model="vm.house.contactInfo" required />
+        </div>
+
+        <div class="form-group">
+            <label for="other">other</label>
+            <input type="text" id="house.other" class="form-control" ng-model="vm.house.other">
+        </div>
+
+
+
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="vm.postInfo()">Post</button>
+        </div>
+    </form>
+</div>

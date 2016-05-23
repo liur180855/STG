@@ -1,0 +1,38 @@
+<h1>whole house Room</h1>
+<div class="form-container">
+    <form method="post">
+        <div class="form-group">
+            <label for="address">address</label>
+            <input type="text" id="house.address" class="form-control" ng-model="vm.house.address" placeholder="123 street name city state" required />
+        </div>
+        <div class="checkbox">
+            <label for="trafficInfo">
+            <input type="checkbox" id="house.trafficInfo" ng-model="vm.house.trafficInfo"> trafficInfo</label>
+        </div>
+        <div class="form-group">
+            <label for="price">price</label>
+            <input type="text" id="house.price" class="form-control" ng-model="vm.house.price" placeholder="i.e 400" required />
+        </div>
+
+        <div class="form-group">
+            <label for="rentalTime">rentalTime</label>
+            <input type="text" id="house.rentalTime" class="form-control" ng-model="vm.house.rentalTime" required />
+        </div>
+
+        <div class="form-group">
+            <label for="contactInfo">contactInfo</label>
+            <input type="text" id="house.contactInfo" class="form-control" ng-model="vm.house.contactInfo" required />
+        </div>
+
+        <div class="form-group">
+            <label for="other">other</label>
+            <input type="text" id="house.other" class="form-control" ng-model="vm.house.other">
+        </div>
+
+
+
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="vm.postInfo()">Post</button>
+        </div>
+    </form>
+</div>
