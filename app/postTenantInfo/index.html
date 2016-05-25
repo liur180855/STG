@@ -23,8 +23,7 @@
             <label for="house.bathroom">bathroom</label>
             <select class="form-control" ng-init="vm.house.bathroom = vm.house.bathroom || 'private'" ng-model="vm.house.bathroom">
                 <option value="private">private</option>
-                <option value="shareWithAnother">shareWithAnother</option>
-                <option value="shareWithThreePlus">shareWithThreePlus</option>
+                <option value="dontCare">dontCare</option>
             </select> 
         </div>
         <div class="form-group">
@@ -45,7 +44,7 @@
 
 
         <div class="form-group">
-            <button class="btn btn-primary" ng-click="vm.postInfo()">Post</button>
+            <button class="btn btn-primary" ng-click="vm.PostTenantInfo()">Post</button>
         </div>
     </form>
 </div>

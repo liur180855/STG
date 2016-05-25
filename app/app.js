@@ -43,12 +43,12 @@
                 controllerAs: 'vm',
                 data: { activeTab: 'wholeHouse' }
             })
-            .state('findHousePost', {
-                url: '/findHousePost',
-                templateUrl: 'findHousePost/index.html',
-                controller: 'findHousePost.IndexController',
+            .state('postTenantInfo', {
+                url: '/postTenantInfo',
+                templateUrl: 'postTenantInfo/index.html',
+                controller: 'postTenantInfo.IndexController',
                 controllerAs: 'vm',
-                data: { activeTab: 'findHousePost' }
+                data: { activeTab: 'postTenantInfo' }
             })
             .state('tenantInfoPage', {
                 url: '/tenantInfoPage',

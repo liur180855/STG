@@ -1,15 +1,15 @@
 (function () { 
     angular
         .module('app')
-        .controller('findHousePost.IndexController', Controller);
+        .controller('postTenantInfo.IndexController', Controller);
 
 	function Controller(dataService) {
         var vm = this;
-        vm.postInfo = postInfo
+        vm.PostTenantInfo = PostTenantInfo
 
-		function postInfo(){
+		function PostTenantInfo(){
 			if(vm.house.area !== undefined && vm.house.rentalTime !== undefined && vm.house.contactInfo !== undefined){
-				dataService.PostLookingHouseInfo(vm.house).then(function () {
+				dataService.PostTenantInfo(vm.house).then(function () {
 				
 				});
 			}

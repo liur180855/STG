@@ -8,15 +8,21 @@
         var service = {};
  
         service.GetAll = GetAll;
-        service.PostInfo = PostInfo;
+        service.PostHouseInfo = PostHouseInfo;
 		service.FindHouse = FindHouse;
-		service.PostLookingHouseInfo = PostLookingHouseInfo;
+		service.PostTenantInfo = PostTenantInfo;
+		service.GetTenantInfo = GetTenantInfo;
 		//GetAll();
         return service;
 
         function GetAll() {
 			console.log("GetAll");
             return $http.get('/getAllHousing').then(handleSuccess, handleError);
+        }
+
+		function GetTenantInfo() {
+			console.log("getTenantInfo");
+            return $http.get('/getTenantInfo').then(handleSuccess, handleError);
         }
 		
         function FindHouse(addressArray,callback) {
@@ -31,17 +37,17 @@
             //return $http.post('/postInfo', house).then(handleSuccess, handleError);
         }
 		
-		function PostInfo(house,callback) {
+		function PostHouseInfo(house,callback) {
 			console.log("PostInfo");
 			console.log(house);
-			return $http.post('/postInfo',house).then(handleSuccess, handleError);
+			return $http.post('/postHouseInfo',house).then(handleSuccess, handleError);
             //return $http.post('/postInfo', house).then(handleSuccess, handleError);
         }
 
-		function PostLookingHouseInfo(house,callback) {
-			console.log("postLookingHouseInfo");
+		function PostTenantInfo(house,callback) {
+			console.log("postTenantInfo");
 			console.log(house);
-			return $http.post('/postLookingHouseInfo',house).then(handleSuccess, handleError);
+			return $http.post('/postTenantInfo',house).then(handleSuccess, handleError);
             //return $http.post('/postInfo', house).then(handleSuccess, handleError);
         }
 
