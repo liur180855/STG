@@ -1,26 +1,27 @@
 <h1>tenantInfoPage</h1>
-<div class="form-container"><table class="table">
-      <thead>
-        <tr>
-          <th>Area</th>         
-          <th>trafficInfo</th>
-          <th>roommateGender</th>
-          <th>bathroom</th>
-          <th>rentalTime</th>
-          <th>contactInfo</th>
-          <th>other</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="house in vm.house">
-          <td>{{house.area}}</td>         
-            <td>{{house.trafficInfo}}</td>
-            <td>{{house.roommateGender}}</td>
-            <td>{{house.bathroom}}</td>
-            <td>{{house.rentalTime}}</td>
-            <td>{{house.contactInfo}}</td>
-            <td>{{house.other}}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="form-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Area</th>         
+        <th>trafficInfo</th>
+        <th>roommateGender</th>
+        <th>bathroom</th>
+        <th>rentalTime</th>
+        <th>contactInfo</th>
+        <th>other</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="house in vm.house">
+        <td>{{house.area}}</td>         
+          <td>{{house.trafficInfo}}</td>
+          <td>{{house.roommateGender}}</td>
+          <td>{{house.bathroom}}</td>
+          <td>{{house.rentalTime}}</td>
+          <td>{{house.contactInfo}}</td>
+          <td>{{house.other}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -1,7 +1,13 @@
 body {
     padding: 20px 0;
 }
- 
+
+table.tableInfoWindow {
+    border: 0px solid black;
+}
+tr.trInfoWindow {
+	height: 0px;
+}
 .flash-message {
     margin-top: 20px;
 }

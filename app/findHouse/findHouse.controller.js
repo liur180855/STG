@@ -52,13 +52,21 @@
                 deleteMarkers();
                 getGeocodePromise(addressArray[0]).then(addCircle).then(findHouseRequest);
 
-                function findHouseRequest(addressArray){
-                    dataService.FindHouse(addressArray).then(function (doc) {
+                function findHouseRequest(){
+                    dataService.FindHouse().then(function (doc) {
+                        var origin =  new google.maps.LatLng(circles[0].getCenter().lat(), circles[0].getCenter().lng())
+                        
                         for (var i = 0; i < doc.length; i++) {
-                            console.log(doc[i].location);
-                            addMarker(doc[i].location,"shit");
+                            if(checkMarkerInCircle(circles[0],doc[i].location)){
+                                //console.log(doc[i]);
+
+                                addMarker(origin,doc[i].location,doc[i]);
+                            }
+                            
                         }
-                        console.log(doc);
+                        //calculateAndDisplayRoute(origin,"2617 lawndale dr plano tx");
+
+                        //console.log(doc);
                     });
 
                 }
