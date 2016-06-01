@@ -7,7 +7,7 @@
         var vm = this;
         //vm.house = null;
 		//vm.houselist;
-        vm.searchInfo = searchInfo
+        vm.searchInfo = searchInfo;
 
 		function searchInfo(){
 			console.log("searchInfo");
@@ -121,6 +121,7 @@
                 */
             }
 		};
+        //searchInfo();
     }
 })();
 

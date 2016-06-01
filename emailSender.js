@@ -40,7 +40,6 @@ transporter.sendMail({
 
 function emailSender(smtpsInfo){
 	this.transporter = nodemailer.createTransport(smtpsInfo);
-	console.log("work");
 	
 };
 

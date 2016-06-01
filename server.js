@@ -10,6 +10,8 @@ var mongojs=require('mongojs');
 var HouseDB = mongojs('HouseDB',['HouseDB']);
 var tenantDB = mongojs('tenantDB',['tenantDB']);
 
+var dbConnector = require('dbConnector')
+var dbConnectorInstance = new dbConnector();
 var GoogleMapsAPI = require('googlemaps');
 
 console.log(config.smtp);
@@ -18,7 +20,7 @@ var emailSenderModule = require('emailSender');
 var emailSender = new emailSenderModule(config.smtp);
 
 
-//emailSender.sendMail(emailSender.createMailOptions(config.from,'liur180855@gmail.com','DFWRoomy: Your House Info Is Posted',null, '<b>Hello world 2</b>'));
+//emailSender.sendMail(emailSender.createMailOptions(config.from,'liur180855@gmail.com',config.successSubject,null, config.successMessage));
 
 
 
@@ -55,49 +57,18 @@ app.get('/', function (req, res) {
     return res.redirect('/app');
 });
 
-app.get('/getAllHousing',function(req,res){
-	console.log("I received a GET request");
-
-	HouseDB.HouseDB.find(function(err1,docs){
-		console.log(docs);
-		res.json(docs);
-	});
-});
-
 app.get('/getTenantInfo',function(req,res){
 	console.log("I received a GET request");
-
-	tenantDB.tenantDB.find(function(err1,docs){
-		console.log(docs);
-		res.json(docs);
-	});
+	dbConnectorInstance.findTenantDB(function(docs){
+    	res.json(docs);
+    });
 });
 
 app.get('/findHouse',function(req,res){
     console.log("I received a GET request");
-    /*
-    var geocodeParams = {
-	  "address":    "",
-	  "components": "",
-	  "bounds":     "",
-	  "language":   "",
-	  "region":     ""
-	};
-
-
-
-	geocodeParams.address = req.body.address;
-	*/
-
-	    HouseDB.HouseDB.find(function(err1,docs){
-
-
-
-	    	console.log(req.query);
-	        console.log(docs);
-			
-	        res.json(docs);
-	    });
+    dbConnectorInstance.findAllHouse(function(docs){
+    	res.json(docs);
+    });
 
 });
 
@@ -128,16 +99,45 @@ app.post('/postHouseInfo', function(req,res){
 });
 
 app.post('/postTenantInfo', function(req,res){
-	
-	console.log("postLookingHouseInfo");
-        console.log(req.body);
+    //console.log(req.body);
+    dbConnectorInstance.insertUnverify(req.body,function(doc){
+    	console.log(doc);
+        res.json(doc);
+    });
+});
 
-        tenantDB.tenantDB.insert(req.body,function(err,doc){
-            res.json(doc);
-        });
+app.get('/verifyInfo',function(req,res){
+	console.log(req.query.verificationCode);
+    console.log("I received a GET request");
+    dbConnectorInstance.findUnverify(req.query.verificationCode,function(docs){
+    	//console.log(docs);
+    	//dbConnectorInstance.insertTenantDB(docs);
+    	/*
+    	dbConnectorInstance.insertDataMining(docs);
+    	dbConnectorInstance.deleteUnverify(req.query.verificationCode);
+    	*/
+    	res.json(docs);
+    });
+    /*
+    dbConnectorInstance.findAllHouse(function(docs){
+    	res.json(docs);
+    });
+    */
 });
 
 // start server
 var server = app.listen(3000, function () {
     console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
 });
+
+
+String.prototype.hashCode = function() {
+  var hash = 0, i, chr, len;
+  if (this.length === 0) return hash;
+  for (i = 0, len = this.length; i < len; i++) {
+    chr   = this.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};

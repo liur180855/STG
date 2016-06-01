@@ -1,5 +1,4 @@
 body {
-    padding: 20px 0;
 }
 
 table.tableInfoWindow {
@@ -7,6 +6,10 @@ table.tableInfoWindow {
 }
 tr.trInfoWindow {
 	height: 0px;
+}
+div.botCatcher{
+	visibility: hidden;
+	display:none;
 }
 .flash-message {
     margin-top: 20px;

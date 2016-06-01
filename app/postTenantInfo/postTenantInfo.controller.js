@@ -5,10 +5,10 @@
 
 	function Controller(dataService) {
         var vm = this;
-        vm.PostTenantInfo = PostTenantInfo
+        vm.PostTenantInfo = PostTenantInfo;
 
 		function PostTenantInfo(){
-			if(vm.house.area !== undefined && vm.house.rentalTime !== undefined && vm.house.contactInfo !== undefined){
+			if(vm.house.area !== undefined && vm.house.rentalTime !== undefined && vm.house.email !== undefined){
 				dataService.PostTenantInfo(vm.house).then(function () {
 				
 				});

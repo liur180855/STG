@@ -30,19 +30,27 @@
             <label for="rentalTime">rentalTime</label>
             <input type="text" id="house.rentalTime" class="form-control" ng-model="vm.house.rentalTime" required />
         </div>
-
         <div class="form-group">
-            <label for="contactInfo">contactInfo</label>
-            <input type="text" id="house.contactInfo" class="form-control" ng-model="vm.house.contactInfo" required />
+            <label for="email">email</label>
+            <input type="text" id="house.email" class="form-control" ng-model="vm.house.email" required />
+        </div>
+        <div class="form-group">
+            <label for="wechat">wechat</label>
+            <input type="text" id="house.wechat" class="form-control" ng-model="vm.house.wechat" />
+        </div>
+        <div class="form-group">
+            <label for="cell">cell</label>
+            <input type="text" id="house.cell" class="form-control" ng-model="vm.house.cell" />
         </div>
 
         <div class="form-group">
             <label for="other">other</label>
             <input type="text" id="house.other" class="form-control" ng-model="vm.house.other">
         </div>
-
-
-
+        <div class="botCatcher">
+            <label for="botCatcher">
+            <input type="checkbox" id="house.botCatcher" ng-model="vm.house.botCatcher"> botCatcher</label>
+        </div>
         <div class="form-group">
             <button class="btn btn-primary" ng-click="vm.PostTenantInfo()">Post</button>
         </div>
