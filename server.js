@@ -60,6 +60,7 @@ app.get('/', function (req, res) {
 app.get('/getTenantInfo',function(req,res){
 	console.log("I received a GET request");
 	dbConnectorInstance.findTenantDB(function(docs){
+		delete docs["_id"];
     	res.json(docs);
     });
 });
@@ -100,23 +101,42 @@ app.post('/postHouseInfo', function(req,res){
 
 app.post('/postTenantInfo', function(req,res){
     //console.log(req.body);
-    dbConnectorInstance.insertUnverify(req.body,function(doc){
-    	console.log(doc);
-        res.json(doc);
+    dbConnectorInstance.insertUnverify(req.body,"tenantDB",function(doc){
+    	console.log(doc._id);
+		res.json(doc);
     });
 });
 
+app.delete('/delTenantInfo', function(req,res){
+	console.log("inside delTenantInfo");
+	console.log(req.query.verificationCode);
+});
 app.get('/verifyInfo',function(req,res){
 	console.log(req.query.verificationCode);
-    console.log("I received a GET request");
+    console.log("I received a verifyInfo GET request");
     dbConnectorInstance.findUnverify(req.query.verificationCode,function(docs){
-    	//console.log(docs);
-    	//dbConnectorInstance.insertTenantDB(docs);
-    	/*
-    	dbConnectorInstance.insertDataMining(docs);
-    	dbConnectorInstance.deleteUnverify(req.query.verificationCode);
-    	*/
-    	res.json(docs);
+		console.log("finished findUnverify");
+		console.log(docs);
+		if (docs == null){
+			console.log("empty");
+			res.json("You are already verified, if this is an error message please contact us");
+			return;
+		}else{
+			console.log("not empty");
+			dbConnectorInstance.insertDB(docs, function(docs){
+				console.log("finished insertDB");
+			});
+    	
+			dbConnectorInstance.insertDataMining(docs, function(docs){
+				console.log("finished insertDataMining");
+			});
+			dbConnectorInstance.deleteUnverify(req.query.verificationCode, function(docs){
+				console.log("finished deleteUnverify");
+			});
+			
+			res.json("You are verified");
+		}
+    	
     });
     /*
     dbConnectorInstance.findAllHouse(function(docs){
@@ -129,15 +149,3 @@ app.get('/verifyInfo',function(req,res){
 var server = app.listen(3000, function () {
     console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
 });
-
-
-String.prototype.hashCode = function() {
-  var hash = 0, i, chr, len;
-  if (this.length === 0) return hash;
-  for (i = 0, len = this.length; i < len; i++) {
-    chr   = this.charCodeAt(i);
-    hash  = ((hash << 5) - hash) + chr;
-    hash |= 0; // Convert to 32bit integer
-  }
-  return hash;
-};
