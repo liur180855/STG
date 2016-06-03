@@ -107,8 +107,9 @@ app.post('/postTenantInfo', function(req,res){
     });
 });
 
-app.delete('/delTenantInfo', function(req,res){
+app.get('/delTenantInfo', function(req,res){
 	console.log("inside delTenantInfo");
+	res.json("inside delTenantInfo");
 	console.log(req.query.verificationCode);
 });
 app.get('/verifyInfo',function(req,res){

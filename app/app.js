@@ -56,6 +56,13 @@
                 controller: 'tenantInfoPage.IndexController',
                 controllerAs: 'vm',
                 data: { activeTab: 'tenantInfoPage' }
+            })
+			.state('delTenantInfo', {
+                url: '/delTenantInfo',
+                templateUrl: 'displayServerMessage/index.html',
+                controller: 'displayServerMessage.IndexController',
+                controllerAs: 'vm',
+                data: { activeTab: 'displayServerMessage' }
             });
     }
 	
