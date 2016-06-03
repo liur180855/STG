@@ -8,7 +8,11 @@
         //vm.house = null;
 		//vm.houselist;
         vm.searchInfo = searchInfo;
-
+		/*console.log(vm.mySearch.address1);
+		angular.element(vm.mySearch.address1).ready(function () {
+			console.log("helloworld");
+		});
+		*/
 		function searchInfo(){
 			console.log("searchInfo");
             var addressArray = [];
