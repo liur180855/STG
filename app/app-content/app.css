@@ -1,4 +1,6 @@
-
+body{
+	background-image: url("background.png");
+}
 table.tableInfoWindow {
     border: 0px solid black;
 }
@@ -6,17 +8,12 @@ tr.trInfoWindow {
 	height: 0px;
 }
 
-div.left {
-    width: 300px;
-    float: left;
+div.cubeContainer{
+	margin-left: 80px;
+	width:450px;
 }
 
 
-div.right {
-    float: none;
-    width: auto;
-    overflow: hidden;
-}​​
 
 div.botCatcher {
 	visibility: hidden;
@@ -32,12 +29,12 @@ div.botCatcher {
 	font-weight: bold; 
 }
 
-.glyphicon {
+span.glyphicon {
     font-size: 50px;
 	color:#6CC417;
 }
 
-.navbar {
+nav.navbar {
     color: #FFFFFF;
     background-color: #FFFFFF;
 }
