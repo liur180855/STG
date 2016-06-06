@@ -14,11 +14,21 @@
             <input type="text" id="house.price" class="form-control" ng-model="vm.house.price" placeholder="i.e 400" required />
         </div>
 
-        <div class="form-group">
-            <label for="rentalTime">rentalTime</label>
-            <input type="text" id="house.rentalTime" class="form-control" ng-model="vm.house.rentalTime" required />
+        <div>
+            <p class="input-group">
+            <label for="rentalTime">fromDate</label>
+              <input type="date" class="form-control"  ng-model="vm.fromdt"  ng-required="true" close-text="Close" />
+            </p>
         </div>
 
+        <div>
+        <label for="toDate">toDate</label>
+            <p class="input-group">
+              <input type="date" class="form-control" id="todt.todtenable"  ng-model="vm.todt"  ng-required="true" close-text="Close" />
+            </p>
+            <input type="checkbox" id="todtlongterm" ng-model="vm.todtlongterm" ng-click="vm.longtermEnable()"> longterm</label>
+        </div>
+    
         <div class="form-group">
             <label for="email">email</label>
             <input type="text" id="house.email" class="form-control" ng-model="vm.house.email" required />

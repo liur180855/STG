@@ -6,8 +6,6 @@
 	function Controller(dataService) {
         var vm = this;
         var markers = new markerClass();
-        var min = 0;
-        var max = 0;
         //vm.house = null;
 		//vm.houselist;
         vm.searchInfo = searchInfo;
@@ -16,43 +14,23 @@
 			console.log("helloworld");
 		});
 		*/
-        sliderDeclaration(min,max);
-        /*
-        function resetSlider() {
-          var $slider = $("#slider-range");
-          $slider.slider("values", 0, 0);
-          $slider.slider("values", 1, 0);
-        }
-        resetSlider();
-        */
-        function sliderDeclaration(min,max) {
-            //$( "#slider-range" ).css('background', 'rgb(0,255,0)');
-            //$( "#slider-range .ui-slider-range" ).css('background', 'rgb(0,255,0)');
+
+          $(function() {
             $( "#slider-range" ).slider({
-                range: true,
-                min: min,
-                max: max,
-                values: [ min, max ],
-                slide: function( event, ui ) {
-                    
-                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                },
-                change: function(event, ui) {
-                   console.log( min);
-                    console.log(max);
-                    console.log(ui.values[ 0 ]);
-                    console.log(ui.values[ 1 ]);
-                    markers.hideMarkerWithPrice(ui.values[ 0 ],ui.values[ 1 ]);
-                }
+              range: true,
+              min: 0,
+              max: 0,
+              values: [ 0, 0 ],
+              slide: function( event, ui ) {
+                $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+              }
             });
             $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
               " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-        };
+          });
 
 
 		function searchInfo(){
-            //directionsDisplay.setMap(null);
-            sliderDeclaration(0,0);
 			console.log("searchInfo");
 
             var addressArray = [];
@@ -100,22 +78,18 @@
                 function findHouseRequest(){
                     dataService.FindHouse().then(function (doc) {
                         var origin =  new google.maps.LatLng(circles[0].getCenter().lat(), circles[0].getCenter().lng())
-                        markers.addOriginMarker(origin);
+                        
                         for (var i = 0; i < doc.length; i++) {
                             if(checkMarkerInCircle(circles[0],doc[i].location)){
                                 //console.log(doc[i]);
 
-                                markers.addMarker(origin,doc[i].location,doc[i],doc[i].price);
+                                markers.addMarker(origin,doc[i].location,doc[i]);
                             }
                             
                         }
-                        max = markers.findMax(max);
-                        min = markers.findMin(min);
-                        console.log(min);
-                        console.log(max);
-                        //markers.hideMarkerWithPrice(min,max);
-                        //resetSlider();
-                        sliderDeclaration(min,max);
+                        markers.findPrice();
+
+
                         //calculateAndDisplayRoute(origin,"2617 lawndale dr plano tx");
 
                         //console.log(doc);

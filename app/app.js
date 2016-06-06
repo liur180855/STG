@@ -11,8 +11,10 @@
 
         $stateProvider
             .state('home', {
-                url: '/',
-                template: '<h1>meow2</h1>',
+                url: '/home',
+                templateUrl: 'home/index.html',
+                controller: 'home.IndexController',
+                controllerAs: 'vm',
 				data: { activeTab: 'home' }
             })
             .state('findHouse', {

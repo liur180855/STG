@@ -9,27 +9,32 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="app-content/app.css" rel="stylesheet" />
 	
 </head>
 <body>
     <!-- header -->
-    <nav class="navbar">
-	<div class="container-fluid">
-    <div class="navbar-header">
-      <a class="pull-left" href="#/"><img src="image/logo.png"></a>
-    </div>
-        <ul class="nav nav-tabs nav-justified">
-            <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse"><span class="glyphicon glyphicon-search"></span></a></li>
-            <li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage"><span class="glyphicon glyphicon-search"></span>tenantInfoPage</a></li>
-            <li ng-class="{active: activeTab === 'postInfo'}"><a ui-sref="postInfo"><span class="glyphicon glyphicon-pencil"></span></a></li>
-        </ul>
-    </div>
+    <nav class="navbar navbar-default">
+    	<div class="container-fluid">
+            <div class="navbar-header">
+              <!-- <a class="pull-left" href="#/"><img src="image/logo.png"></a> -->
+                <a class="navbar-brand" ui-sref="home" >
+                    <img src="image/logo.png">
+                </a>
+            </div>
+            <ul class="nav nav-tabs navbar-right">
+                <!-- <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li> -->
+                <li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse"><span class="glyphicon glyphicon-search"></span></a></li>
+                <li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage"><span class="glyphicon glyphicon-search"></span></a></li>
+                <li ng-class="{active: activeTab === 'postInfo'}"><a ui-sref="postInfo"><span class="glyphicon glyphicon-pencil"></span></a></li>
+            </ul>
+        </div>
     </nav>
-    <div class="container">
+    <div>
     <!-- main -->
     <main ui-view></main>
     </div>
@@ -38,6 +43,7 @@
     <!-- application scripts -->
     <script src="app.js"></script>
 	<script src="app-services/data.service.js"></script>
+    <script src="home/home.controller.js"></script>
 	<script src="postInfo/postInfo.controller.js"></script>
 	<script src="findHouse/findHouse.controller.js"></script>
     <script src="singleHouse/singleHouse.controller.js"></script>

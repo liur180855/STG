@@ -60,23 +60,30 @@ app.get('/', function (req, res) {
 app.get('/getTenantInfo',function(req,res){
 	console.log("I received a GET request");
 	dbConnectorInstance.findTenantDB(function(docs){
-		delete docs["_id"];
+		docs = clearSensetiveInfo(docs);
     	res.json(docs);
     });
 });
+
+function clearSensetiveInfo(docs){
+	for(var i in docs){
+		delete docs[i]["_id"];
+		delete docs[i]["address"];
+		delete docs[i]["datatype"];
+	}
+	return docs;
+}
 
 app.get('/findHouse',function(req,res){
     console.log("I received a GET request");
     dbConnectorInstance.findAllHouse(function(docs){
+    	docs = clearSensetiveInfo(docs);
     	res.json(docs);
     });
-
 });
 
 app.post('/postHouseInfo', function(req,res){
-	
-	console.log("I received a POST request");
-	
+	console.log("I received a postHouseInfo request");
 	//update(req.body);
 	var geocodeParams = {
 	  "address":    "",
@@ -92,9 +99,14 @@ app.post('/postHouseInfo', function(req,res){
         var house = req.body;
         house.location = result.results[0].geometry.location;
         console.log(house);
-        HouseDB.HouseDB.insert(house,function(err,doc){
-            res.json(doc);
-        });
+
+        dbConnectorInstance.insertUnverify(req.body,"HouseDB",function(doc){
+	    	console.log(doc._id);
+	    	console.log(doc.email);
+	    	emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, emailSender.createVerifyMessage(doc._id,"delHouseInfo")));
+			//emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, config.successMessage));
+			res.json(doc);
+	    });
     });
     console.log(geocodeParams);
 });
@@ -103,15 +115,43 @@ app.post('/postTenantInfo', function(req,res){
     //console.log(req.body);
     dbConnectorInstance.insertUnverify(req.body,"tenantDB",function(doc){
     	console.log(doc._id);
+    	console.log(doc.email);
+    	emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, emailSender.createVerifyMessage(doc._id,"delTenantInfo")));
+		//emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, config.successMessage));
+
 		res.json(doc);
     });
 });
 
 app.get('/delTenantInfo', function(req,res){
 	console.log("inside delTenantInfo");
-	res.json("inside delTenantInfo");
+	
 	console.log(req.query.verificationCode);
+	dbConnectorInstance.deleteTenantDB(req.query.verificationCode, function(docs){
+		console.log("finished deleteTenantDB");
+		console.log(docs.n);
+		if (docs.n){
+			res.json("deletion success");
+		}else{
+			res.json("not in db or already deleted");
+		}
+		
+	});
 });
+
+app.get('/delHouseInfo', function(req,res){
+	console.log("inside delHouseInfo");
+	console.log(req.query.verificationCode);
+	dbConnectorInstance.deleteHouseDB(req.query.verificationCode, function(docs){
+		console.log("finished deleteTenantDB");
+		if (docs.n){
+			res.json("deletion success");
+		}else{
+			res.json("not in db or already deleted");
+		}
+	});
+});
+
 app.get('/verifyInfo',function(req,res){
 	console.log(req.query.verificationCode);
     console.log("I received a verifyInfo GET request");
@@ -120,6 +160,8 @@ app.get('/verifyInfo',function(req,res){
 		console.log(docs);
 		if (docs == null){
 			console.log("empty");
+			//req.session['success'] = 'User added successfully';
+			//res.redirect('/');
 			res.json("You are already verified, if this is an error message please contact us");
 			return;
 		}else{

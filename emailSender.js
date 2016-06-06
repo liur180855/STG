@@ -54,6 +54,14 @@ emailSender.prototype.createMailOptions = function(from, to, subject, text, body
 	return mailOptions;
 };
 
+emailSender.prototype.createVerifyMessage = function(id,operation){
+    console.log(id)
+    var message = '<p>http://localhost:3000/app/#/home?operation=verifyInfo&verificationCode='+ id+'</p>'+
+    '<p>http://localhost:3000/app/#/home?operation='+ operation+'&verificationCode='+ id+'</p>';
+    console.log(message);
+    return message;
+};
+
 emailSender.prototype.sendMail = function(mailOptions){
 	this.transporter.sendMail(mailOptions,function(error, info){
 		if(error){

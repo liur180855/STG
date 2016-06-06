@@ -15,7 +15,9 @@ function initMap() {
 	    center: {lat: 32.9783403, lng: -96.7680352},
 	    zoom: 12
     });
-
+    directionsDisplay.setMap(map);
+    directionsDisplay.setOptions( { suppressMarkers: true } );
+    directionsDisplay.setOptions( {preserveViewport: true} );
 }
 
 function checkMarkerInCircle(circle,location){
@@ -86,18 +88,11 @@ function calculateRoute(origin, destination) {
 }
 
 
-function initializeDisplay(){
-    directionsDisplay.setMap(null);
-    directionsDisplay = new google.maps.DirectionsRenderer;
-    directionsDisplay.setMap(map);
-    directionsDisplay.setOptions( { suppressMarkers: true } );
-    directionsDisplay.setOptions( {preserveViewport: true} );
-}
+
 
 function deleteCircles() {
-    initializeDisplay();
-    setMapOnAll(null);
-    circles = [];
+      setMapOnAll(null);
+      circles = [];
 }
 
 function addCircle(latLngArray) {
@@ -113,9 +108,12 @@ function addCircle(latLngArray) {
         center: { lat: latLngArray.lat, lng:latLngArray.lng},
         radius: latLngArray.radius*1609.344
     });
-    
+    var marker = new google.maps.Marker({
+        position: { lat: latLngArray.lat, lng:latLngArray.lng},
+        map: map,
+        icon: ORIGINICON
+    });
     circles.push(circle);
-    return latLngArray;
 }
 
 /*

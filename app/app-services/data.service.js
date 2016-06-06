@@ -12,8 +12,26 @@
 		service.FindHouse = FindHouse;
 		service.PostTenantInfo = PostTenantInfo;
 		service.GetTenantInfo = GetTenantInfo;
+		service.verifyInfo = verifyInfo;
+		service.delTenantInfo = delTenantInfo;
+		service.delHouseInfo = delHouseInfo;
 		//GetAll();
         return service;
+
+		function verifyInfo(verificationCode) {
+			console.log("verifyInfo");
+            return $http.get('/verifyInfo?verificationCode='+verificationCode).then(handleSuccess, handleError);
+        }
+
+		function delTenantInfo(verificationCode) {
+			console.log("delTenantInfo");
+            return $http.get('/delTenantInfo?verificationCode='+verificationCode).then(handleSuccess, handleError);
+        }
+
+		function delHouseInfo(verificationCode) {
+			console.log("delHouseInfo");
+            return $http.get('/delHouseInfo?verificationCode='+verificationCode).then(handleSuccess, handleError);
+        }
 
         function GetAll() {
 			console.log("GetAll");
