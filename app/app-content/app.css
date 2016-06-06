@@ -5,19 +5,20 @@ table.tableInfoWindow {
 tr.trInfoWindow {
 	height: 0px;
 }
-.left {
+
+div.left {
     width: 300px;
     float: left;
 }
 
 
-.right {
+div.right {
     float: none;
-    /* the next props are meant to keep this block independent from the other floated one */
     width: auto;
     overflow: hidden;
 }​​
-div.botCatcher{
+
+div.botCatcher {
 	visibility: hidden;
 	display:none;
 }
@@ -33,6 +34,7 @@ div.botCatcher{
 
 .glyphicon {
     font-size: 50px;
+	color:#6CC417;
 }
 
 .navbar {

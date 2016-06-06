@@ -26,11 +26,24 @@
                     <img src="image/logo.png">
                 </a>
             </div>
+			
             <ul class="nav nav-tabs navbar-right">
                 <!-- <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li> -->
-                <li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse"><span class="glyphicon glyphicon-search"></span></a></li>
-                <li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage"><span class="glyphicon glyphicon-search"></span></a></li>
-                <li ng-class="{active: activeTab === 'postInfo'}"><a ui-sref="postInfo"><span class="glyphicon glyphicon-pencil"></span></a></li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-search"></span></a>
+					<ul class="dropdown-menu">
+						<li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">findHouse</a></li>
+						<li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage">tenantInfoPage</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span class="glyphicon glyphicon-pencil"></span></a>
+					<ul class="dropdown-menu">
+						<li ng-class="{active: activeTab === 'singleHouse'}"><a ui-sref="singleHouse">single house</a></li>
+						<li ng-class="{active: activeTab === 'wholeHouse'}"><a ui-sref="wholeHouse">wholeHouse</a></li>
+						<li ng-class="{active: activeTab === 'postTenantInfo'}"><a ui-sref="postTenantInfo">postTenantInfo</a></li>
+					</ul>
+				</li>
             </ul>
         </div>
     </nav>
