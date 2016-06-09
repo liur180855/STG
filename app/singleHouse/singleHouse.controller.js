@@ -7,6 +7,28 @@
         var vm = this;
         vm.postInfo = postInfo;
         vm.longtermEnable = longtermEnable;
+		
+		
+		$(function() {
+			$(".fromdt").datepicker({
+				
+				onSelect: function(dateText, inst) {
+					
+					vm.fromdt =dateText;
+				}
+			});
+		});
+		
+		$(function() {
+			$(".todt").datepicker({
+				
+				onSelect: function(dateText, inst) {
+					
+					vm.todt =dateText;
+				}
+			});
+		});
+		
         function longtermEnable(){
         	var x = document.getElementById("todt.todtenable");
         	if (vm.todtlongterm==true){
@@ -17,6 +39,16 @@
         	}
         }
         /*
+		vm.longtermEnable = longtermEnable;
+        function longtermEnable(){
+        	var x = document.getElementById("todt.todtenable");
+        	if (vm.todtlongterm==true){
+        		x.setAttribute("disabled", "disabled");
+				
+        	}else{
+				x.removeAttribute("disabled");
+        	}
+        }
         vm.open2 = open2;
 
 		vm.today = function() {
@@ -69,15 +101,15 @@
   		}
 		function postInfo(){
 			
-  		
+			console.log(vm.fromdt);
+			console.log(vm.todt);
 			console.log("post info");
-			
-			
+			console.log(vm.house);
+			vm.house.rentalTime = getRentalTime(vm.fromdt,vm.todt,vm.todtlongterm);
+			console.log(vm.house.rentalTime );
 			if((vm.todt !== undefined ||vm.todtlongterm)&& vm.fromdt !== undefined && vm.house.address !== undefined && vm.house.price !== undefined){
-				vm.house.rentalTime = getRentalTime(convertDate(vm.fromdt),convertDate(vm.todt),vm.todtlongterm)
-				console.log(vm.house);
-				vm.house.rentalTime = getRentalTime(convertDate(vm.fromdt),convertDate(vm.todt),vm.todtlongterm)
-			
+
+				
 				dataService.PostHouseInfo(vm.house).then(function () {
 				
 				});
