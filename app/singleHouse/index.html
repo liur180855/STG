@@ -65,6 +65,77 @@
             <input type="checkbox" id="house.furnished" ng-model="vm.house.furnished"> furnished</label>
         </div>
 
+<input type='text' class='inp' />
+        <script type="text/javascript">
+		
+$(function() {
+    $(".inp").datepicker({
+		
+        onSelect: function(dateText, inst) {
+             alert(dateText);
+        }
+    });
+});
+ </script>
+<!-- 
+<div id="myDialog" title="Other Date Range" style="display:none;">
+    <table border="0" tabIndex="1">
+        <tr>
+            <td>From</td>
+            <td></td>
+            <td>To</td>
+        </tr>
+        <tr>
+            <td><input id="fromOtherDateTextBox" style="width:140px;"/></td>
+            <td>&nbsp;-&nbsp;</td>
+            <td><input id="toOtherDateTextBox" style="width:140px;"/></td>
+        </tr>
+        <tr>
+            <td>mm/dd/yyyy</td>
+            <td></td>
+            <td>mm/dd/yyyy</td>
+        </tr>
+    </table>
+</div>
+<a href="#" class="test">Open</a>
+        <script type="text/javascript">
+		
+$(function() {
+    $(".inp").datepicker({
+        onSelect: function(dateText, inst) {
+            // alert(dateText);
+        }
+    });
+});
+
+$("#fromOtherDateTextBox").datepicker({        
+	defaultDate: "-1d",
+	maxDate: 0,
+	minDate: new Date(2000, 1, 1)
+});   
+
+$("#toOtherDateTextBox").datepicker({        
+	defaultDate: "0d",
+	maxDate: 0,
+	minDate: new Date(2000, 1, 1)
+});   
+
+$("#myDialog").dialog({
+	autoOpen: false, modal: true,
+	show: "fade", hide: "fade",
+	height:220, width:350,
+	buttons: {
+		'Cancel': function () { $(this).dialog('close'); }
+	}
+});  
+
+$('.test').click(function(){
+    $("#myDialog").dialog("open");
+});
+        </script>
+
+		
+		
         <div>
             <p class="input-group">
             <label for="fromDate">fromDate</label>
@@ -79,7 +150,7 @@
             </p>
             <input type="checkbox" id="todtlongterm" ng-model="vm.todtlongterm" ng-click="vm.longtermEnable()"> longterm</label>
         </div>
-
+ -->
         <div class="form-group">
             <label for="email">email</label>
             <input type="text" id="house.email" class="form-control" ng-model="vm.house.email" required />
