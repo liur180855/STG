@@ -28,17 +28,19 @@
                         </select> 
                     </div>
 
-                    <div>
+                    
+                    
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="vm.searchInfo()">Search</button>
+                    </div>
+					<br> 
+					<div>
                         <p>
                             <label for="amount">Price range:</label>
                             <input type="text" id="amount"  readonly style="border:0; color:#f6931f;">
                         </p>
                          
                         <div id="slider-range"></div>
-                    </div>
-                    <br> 
-                    <div class="form-group">
-                        <button class="btn btn-primary" ng-click="vm.searchInfo()">Search</button>
                     </div>
                 </form>
             </div>
