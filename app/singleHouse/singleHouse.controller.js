@@ -84,12 +84,6 @@
   };
   */
 
-  		function convertDate(date){
-
-			var dateString=new Date(date).toUTCString();
-			dateString=dateString.split(' ').slice(1, 4).join(' ');
-			return dateString
-  		}
   		function getRentalTime(from,to,longterm){
   			if (longterm){
   				return "longterm lease starting from " + from;
