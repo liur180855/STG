@@ -1,10 +1,101 @@
 @import url('http://getbootstrap.com/2.3.2/assets/css/bootstrap.css');
 
+#ui-view-background
+{
+}
+
+#entirepage-background
+{
+}
+
+
+/*
+@media (min-width: 1200px)
+.container {
+    width: 1170px;
+}
+
+@media (min-width: 992px)
+.container {
+    width: 970px;
+}
+
+@media (min-width: 768px)
+.container {
+    width: 750px;
+}
+@media (min-width: 500px)
+.container {
+    width: 7450px;
+}
+*/
+
+@media only screen and (min-width: 1px) {
+
+    .container {
+	    width: 350px;
+	}
+}
+
+@media only screen and (min-width: 500px) {
+
+    .container {
+	    width: 450px;
+	}
+}
+
+@media only screen and (min-width: 700px) {
+
+    .container {
+	    width: 650px;
+	}
+}
+
+@media only screen and (min-width: 900) {
+
+    .container {
+	    width: 850px;
+	}
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+input.form-control {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 32px;
+    padding: 0;
+    padding-top: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: white;
+    background-clip: padding-box;
+    line-height: 1.33333;
+    font-weight: 400;
+    letter-spacing: normal;
+    display: table-cell;
+    vertical-align: baseline;
+    font-weight: normal;
+}
+
 
 
 body{
-	background-image: url("background2.png");
+	
 }
+
 table.tableInfoWindow {
     border: 0px solid black;
 }

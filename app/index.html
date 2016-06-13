@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8"/>
     <title>DFW Roomy</title>
     <!-- external scripts -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -14,25 +15,28 @@
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="app-content/app.css" rel="stylesheet" />
-	
+	<script src="language.js"></script>
 </head>
+<div id="entirepage-background" >
+<div>
 <body>
+<div id="ui-view-background">
     <!-- header -->
     <nav class="navbar navbar-default">
-    	<div class="container-fluid">
-            <div class="navbar-header">
+    	<div>
+            <div class="navbar-header pull-left">
               <!-- <a class="pull-left" href="#/"><img src="image/logo.png"></a> -->
                 <a class="navbar-brand" ui-sref="home" >
                     <img src="image/logo.png">
                 </a>
             </div>
 			
-            <ul class="nav nav-tabs navbar-right">
+            <ul class="nav nav-tabs navbar-header pull-right">
                 <!-- <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li> -->
 				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 					<span class="glyphicon glyphicon-search"></span></a>
 					<ul class="dropdown-menu">
-						<li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">findHouse</a></li>
+						<li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">LANGUAGEOPTION.findHouse[0]</a></li>
 						<li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage">tenantInfoPage</a></li>
 					</ul>
 				</li>
@@ -48,6 +52,7 @@
         </div>
     </nav>
     <div>
+
     <!-- main -->
     <main ui-view></main>
     </div>
@@ -56,6 +61,8 @@
     <!-- application scripts -->
     <script src="app.js"></script>
 	<script src="app-services/data.service.js"></script>
+    <script src="app-services/rental.factory.js"></script>
+    <script src="app-services/date.directive.js"></script>
     <script src="home/home.controller.js"></script>
 	<script src="postInfo/postInfo.controller.js"></script>
 	<script src="findHouse/findHouse.controller.js"></script>
@@ -64,5 +71,8 @@
     <script src="postTenantInfo/postTenantInfo.controller.js"></script>
     <script src="tenantInfoPage/tenantInfoPage.controller.js"></script>
     <script src="displayServerMessage/displayServerMessage.controller.js"></script>
+    </div>
 </body>
+</div>
+</div>
 </html>
