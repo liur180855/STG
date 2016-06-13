@@ -3,52 +3,23 @@
         .module('app')
         .controller('singleHouse.IndexController', Controller);
 
-	function Controller(dataService) {
+	function Controller(dataService,rentalFactory) {
         var vm = this;
         vm.postInfo = postInfo;
-        vm.longtermEnable = longtermEnable;
-		
-		
-		$(function() {
-			$(".fromdt").datepicker({
-				
-				onSelect: function(dateText, inst) {
-					
-					vm.fromdt =dateText;
-				}
-			});
-		});
-		
-		$(function() {
-			$(".todt").datepicker({
-				
-				onSelect: function(dateText, inst) {
-					
-					vm.todt =dateText;
-				}
-			});
-		});
-		
-        function longtermEnable(){
-        	var x = document.getElementById("todt.todtenable");
-        	if (vm.todtlongterm==true){
-        		x.setAttribute("disabled", "disabled");
-				
-        	}else{
-				x.removeAttribute("disabled");
-        	}
-        }
         /*
-		vm.longtermEnable = longtermEnable;
-        function longtermEnable(){
-        	var x = document.getElementById("todt.todtenable");
-        	if (vm.todtlongterm==true){
-        		x.setAttribute("disabled", "disabled");
+        vm.longtermEnable = longtermEnable(vm.todtlongterm,vm.todt);
+		
+
+		function longtermEnable(longterm,todt){
+        	var todtenable = document.getElementById(todt);
+        	if (longterm==true){
+        		todtenable.setAttribute("disabled", "disabled");
 				
         	}else{
-				x.removeAttribute("disabled");
+				todtenable.removeAttribute("disabled");
         	}
         }
+<<<<<<< HEAD
         vm.open2 = open2;
 
 		vm.today = function() {
@@ -84,23 +55,11 @@
   };
   */
 
-  		function getRentalTime(from,to,longterm){
-  			if (longterm){
-  				return "longterm lease starting from " + from;
-  			}else{
-  				return "from " + from + " to " + to;
-  			}
-  			
 
-  		}
 		function postInfo(){
 			
-			console.log(vm.fromdt);
-			console.log(vm.todt);
-			console.log("post info");
-			console.log(vm.house);
-			vm.house.rentalTime = getRentalTime(vm.fromdt,vm.todt,vm.todtlongterm);
-			console.log(vm.house.rentalTime );
+			vm.house.rentalTime = rentalFactory.getRentalTime(vm.fromdt,vm.todt,vm.todtlongterm);
+			console.log(vm.house.rentalTime);
 			if((vm.todt !== undefined ||vm.todtlongterm)&& vm.fromdt !== undefined && vm.house.address !== undefined && vm.house.price !== undefined){
 
 				
@@ -111,3 +70,4 @@
 		};
     }
 })();
+

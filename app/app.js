@@ -4,7 +4,8 @@
         .config(config)
         .run(run);
 
- 
+  
+
     function config($stateProvider, $urlRouterProvider) {
         // default route
         $urlRouterProvider.otherwise("/");
