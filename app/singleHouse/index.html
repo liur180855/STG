@@ -1,40 +1,30 @@
+
+<script src="./singleHouse/mapSearchBox.js"></script>
 <div class="container">
 	<h1>singleHouse</h1>
     <form method="post">
-        <input class="form-control" type="text" id="house.address"  ng-model="vm.house.address" placeholder="Address" required />
-        <div class="checkbox">
-            <label for="trafficInfo">
-            <input type="checkbox" id="house.trafficInfo" ng-model="vm.house.trafficInfo"> trafficInfo</label>
-        </div>
-        <div class="form-group">
-            <label for="price">price</label>
-            <input type="text" id="house.price" class="form-control" ng-model="vm.house.price" placeholder="i.e 400" required />
-        </div>
-        <div class="form-group">
-            <label for="house.utilityIncluded">utilityIncluded</label>
-            <select class="form-control" ng-init="vm.house.utilityIncluded = vm.house.utilityIncluded || 'none'" ng-model="vm.house.utilityIncluded">
-                <option value="all">all</option>
-                <option value="partial">partial</option>
-                <option value="none">none</option>
-            </select> 
-        </div>
-        <div class="form-group">
-            <label for="house.roommateGender">roommateGender</label>
-            <select class="form-control" ng-init="vm.house.roommateGender = vm.house.roommateGender || 'none'" ng-model="vm.house.roommateGender">
-                <option value="male">male</option>
-                <option value="female">female</option>
-                <option value="mix">mix</option>
-                <option value="none">none</option>
-            </select> 
-        </div>
-        <div class="form-group">
-            <label for="house.tenantGenderRestriction">tenantGenderRestriction</label>
-            <select class="form-control" ng-init="vm.house.tenantGenderRestriction = vm.house.tenantGenderRestriction || 'none'" ng-model="vm.house.tenantGenderRestriction">
-                <option value="male">male</option>
-                <option value="female">female</option>
-                <option value="none">none</option>
-            </select> 
-        </div>
+		<input class="form-control" id="house.address" ng-model="vm.house.address" type="text" placeholder="Address" required/>
+        <label for="trafficInfo"><input type="checkbox" id="house.trafficInfo" ng-model="vm.house.trafficInfo"> trafficInfo</label>
+        <input type="text" id="house.price" class="form-control" ng-model="vm.house.price" placeholder="monthly rental rate" required />
+		<select class="form-control" ng-model="vm.house.utilityIncluded" required>
+			<option value="" disabled="">utilityIncluded</option>
+			<option value="all">all</option>
+			<option value="partial">partial</option>
+			<option value="none">none</option>
+		</select> 
+		<select class="form-control" ng-model="vm.house.roommateGender" required>
+			<option value="" disabled="">roommateGender</option>
+			<option value="male">male</option>
+			<option value="female">female</option>
+			<option value="mix">mix</option>
+			<option value="none">none</option>
+		</select>
+		<select class="form-control" ng-model="vm.house.tenantGenderRestriction" required>
+			<option value="" disabled="">tenantGenderRestriction</option>
+			<option value="male">male</option>
+			<option value="female">female</option>
+			<option value="none">none</option>
+		</select>
         <div class="form-group">
             <label for="house.totalRoomate">totalRoomate</label>
             <select class="form-control" ng-init="vm.house.totalRoomate = vm.house.totalRoomate || '0'" ng-model="vm.house.totalRoomate">
@@ -99,3 +89,5 @@
         </div>
     </form>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initMap" async defer></script>
