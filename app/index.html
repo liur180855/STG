@@ -1,61 +1,58 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta charset="utf-8"/>
-    <title>DFW Roomy</title>
-    <!-- external scripts -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="app-content/app.css" rel="stylesheet" />
-	<script src="language.js"></script>
-</head>
-<div id="entirepage-background" >
-<div>
+<html >
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta charset="utf-8"/>
+        <title>DFW Roomy</title>
+        <!-- external scripts -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    	<link href="app-content/app.css" rel="stylesheet" />
+    	<script src="language.js"></script>
+
+
+    </head>
 <body>
-<div id="ui-view-background">
     <!-- header -->
     <nav class="navbar navbar-default">
-    	<div>
-            <div class="navbar-header pull-left">
-              <!-- <a class="pull-left" href="#/"><img src="image/logo.png"></a> -->
-                <a class="navbar-brand" ui-sref="home" >
-                    <img src="image/logo.png">
-                </a>
-            </div>
-			
-            <ul class="nav nav-tabs navbar-header pull-right">
-                <!-- <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li> -->
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					<span class="glyphicon glyphicon-search"></span></a>
-					<ul class="dropdown-menu">
-						<li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">singleHouse</a></li>
-						<li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage">tenantInfoPage</a></li>
-					</ul>
-				</li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					<span class="glyphicon glyphicon-pencil"></span></a>
-					<ul class="dropdown-menu">
-						<li ng-class="{active: activeTab === 'singleHouse'}"><a ui-sref="singleHouse">singlehouse</a></li>
-						<li ng-class="{active: activeTab === 'wholeHouse'}"><a ui-sref="wholeHouse">wholeHouse</a></li>
-						<li ng-class="{active: activeTab === 'postTenantInfo'}"><a ui-sref="postTenantInfo">postTenantInfo</a></li>
-					</ul>
-				</li>
-            </ul>
+        <div class="navbar-header pull-left">
+          <!-- <a class="pull-left" href="#/"><img src="image/logo.png"></a> -->
+            <a class="navbar-brand" ui-sref="home" >
+                <img src="image/logo.png">
+            </a>
         </div>
+		
+        <ul class="nav nav-tabs navbar-header pull-right">
+            <!-- <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li> -->
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<span class="glyphicon glyphicon-search"></span></a>
+				<ul class="dropdown-menu">
+					<li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">singleHouse</a></li>
+					<li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage">tenantInfoPage</a></li>
+				</ul>
+			</li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<span class="glyphicon glyphicon-pencil"></span></a>
+				<ul class="dropdown-menu">
+					<li ng-class="{active: activeTab === 'singleHouse'}"><a ui-sref="singleHouse">singlehouse</a></li>
+					<li ng-class="{active: activeTab === 'wholeHouse'}"><a ui-sref="wholeHouse">wholeHouse</a></li>
+					<li ng-class="{active: activeTab === 'postTenantInfo'}"><a ui-sref="postTenantInfo">postTenantInfo</a></li>
+				</ul>
+			</li>
+        </ul>
     </nav>
-    <div>
+
 
     <!-- main -->
-    <main ui-view></main>
-    </div>
+    <main ui-view ></main>
+
     
  
     <!-- application scripts -->
@@ -71,9 +68,5 @@
     <script src="postTenantInfo/postTenantInfo.controller.js"></script>
     <script src="tenantInfoPage/tenantInfoPage.controller.js"></script>
     <script src="displayServerMessage/displayServerMessage.controller.js"></script>
-	
-    </div>
 </body>
-</div>
-</div>
 </html>

@@ -46,26 +46,11 @@
 		<input  class="form-control" type="text" datepicker="" ng-model="vm.todt" ng-disabled="vm.todtlongterm == true" placeholder="todt" required/>
 		<input type="checkbox" id="todtlongterm" ng-model="vm.todtlongterm" ng-click="vm.todt = null" > longterm</label>
 
-        <div class="form-group">
-            <label for="email">email</label>
-            <input type="text" id="house.email" class="form-control" ng-model="vm.house.email" required />
-        </div>
-        <div class="form-group">
-            <label for="wechat">wechat</label>
-            <input type="text" id="house.wechat" class="form-control" ng-model="vm.house.wechat" />
-        </div>
-        <div class="form-group">
-            <label for="cell">cell</label>
-            <input type="text" id="house.cell" class="form-control" ng-model="vm.house.cell" />
-        </div>
-        <div class="form-group">
-            <label for="other">other</label>
-            <input type="text" id="house.other" class="form-control" ng-model="vm.house.other">
-        </div>
-
-        <div class="form-group">
-            <button class="btn btn-primary" ng-click="vm.postInfo()">Post</button>
-        </div>
+        <input class="form-control" type="text" id="house.email" class="form-control" ng-model="vm.house.email" placeholder="email" required />
+        <input class="form-control" type="text" id="house.wechat" class="form-control" ng-model="vm.house.wechat" placeholder="wechat"/>
+        <input class="form-control" type="text" id="house.cell" class="form-control" ng-model="vm.house.cell" placeholder="cell"/>
+        <input class="form-control" type="text" id="house.other" class="form-control" ng-model="vm.house.other"  placeholder="other"/>
+        <button class="btn btn-primary" ng-click="vm.postInfo()">Post</button>
 
         <div class="botCatcher">
             <label for="botCatcher">

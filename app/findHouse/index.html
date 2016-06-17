@@ -1,55 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-          #map {
-            width: 100%;
-            height: 100px;
-          }
-        </style>
-    </head>
-<body>
 
-<div style="width:45%;float: right;">
-<form method="post">
-    <div class="form-group">
-        <label for="mySearch.address1">Place around my work</label>
-        <input type="text" id="mySearch.address1" class="form-control" ng-model="vm.mySearch.address1" ng-init="vm.mySearch.address1 = vm.mySearch.address1 || 'richardson, tx'" />
-        <label for="mySearch.address1">Maximum distance away</label>
-        <select class="form-control" ng-init="vm.mySearch.mile1 = vm.mySearch.mile1 || '30'" ng-model="vm.mySearch.mile1">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="30">30</option>
-        </select> 
-    </div>
+<head>
+</head>
 
-    
-    
-    <div class="form-group">
-        <button class="btn btn-primary" ng-click="vm.searchInfo()">Search</button>
-    </div>
-	<br> 
-	<div>
-        <p>
-            <label for="amount">Price range:</label>
-            <input type="text" id="amount"  readonly style="border:0; color:#f6931f;">
-        </p>
-         
-        <div id="slider-range"></div>
-    </div>
-</form>
-</div>
+<!-- <div style="width:300px;float: left; padding-left: 15px; padding-right: 15px;">
+    <form method="post">
+        <div class="form-group">
+            <label for="mySearch.address1">School/work/other important location</label>
+            <input class="form-control" type="text" id="mySearch.address1" class="form-control" ng-model="vm.mySearch.address1" ng-init="vm.mySearch.address1 = vm.mySearch.address1 || 'richardson, tx'"/>
+            <label for="mySearch.address1">Maximum distance away</label>
+            <select class="form-control" ng-init="vm.mySearch.mile1 = vm.mySearch.mile1 || '30'" ng-model="vm.mySearch.mile1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="30">30</option>
+            </select> 
+        </div>
 
-<div style="float: right;" id="map"></div>
+        
+        
+        <div class="form-group">
+            <button class="btn btn-primary" ng-click="vm.searchInfo()">Search</button>
+        </div>
+    	<br> 
+    	<div>
+            <p>
+                <label for="amount">Price range:</label>
+                <input type="text" id="amount"  readonly style="border:0; color:#f6931f;">
+            </p>
+             
+            <div id="slider-range"></div>
+        </div>
+    </form>
+</div> -->
+<div id="map"></div>
 
 
-
-    <script src="./findHouse/googleMap.js"></script>
-    <script src="./findHouse/markerClass.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-        async defer></script>
-</body>
-</html>
+<script src="./findHouse/googleMap.js"></script>
+<script src="./findHouse/markerClass.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+    async defer></script>
