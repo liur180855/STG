@@ -17,11 +17,15 @@ function initMap() {
     });
 
 }
+function setMapBound(circle){
+    map.fitBounds(circle.getBounds());
+}
 
 function checkMarkerInCircle(circle,location){
 
     var latLng = new google.maps.LatLng(location);
     return circle.getBounds().contains(latLng) && google.maps.geometry.spherical.computeDistanceBetween(circle.getCenter(), latLng) <= circle.getRadius();
+
 }
 
 
@@ -48,23 +52,7 @@ function infoWindowContent(contentString){
     return output;
 
 }
-/*
-function infoWindowContent(contentString){
-    var elm = document.createElement('table');
-    elm.setAttribute('id', 'myTable');
-    elm.setAttribute('class', 'tableInfoWindow');
-    elm.innerHTML = '';
-    for (var property in contentString) {
-        console.log(property)
-        if (property != "location" && property != "_id"){
-            //console.log(property)
-            elm.innerHTML += '<tr class ="trInfoWindow"><th>'+property + '</th><td>' + contentString[property]+'</td></tr>';
-        }
-    }
-    return elm;
 
-}
-*/
 function calculateRoute(origin, destination) {
     var deferred = $.Deferred();
     directionsService.route({
@@ -73,10 +61,6 @@ function calculateRoute(origin, destination) {
         travelMode: google.maps.TravelMode.DRIVING
     }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
-            //directionsDisplay.setDirections(response);
-            //console.log(response);
-            //console.log(response.routes[0].legs[0].distance.text,response.routes[0].legs[0].duration.text);
-            //deferred.resolve(response.routes[0].legs[0].distance.text,response.routes[0].legs[0].duration.text);
             deferred.resolve(response);
         } else {
             deferred.reject(status);
@@ -117,31 +101,6 @@ function addCircle(latLngArray) {
     circles.push(circle);
     return latLngArray;
 }
-
-/*
-function cicleContainsMarker(latLng) {
-    circles
-}
-
-google.maps.Circle.prototype.contains = function(latLng) {
-  return this.getBounds().contains(latLng) && google.maps.geometry.spherical.computeDistanceBetween(this.getCenter(), latLng) <= this.getRadius();
-}
-*/
-/*
-function getAllGeocodeThenAddCircle(addressArray){
-	deleteCircles();
-    deleteMarkers();
-	var addressArrayLatLng = [];
-	for (var i=0;i<addressArray.length;i++){
-		//console.log("callback called! " + addressArray[i].radius);
-		
-		getGeocode(addressArray[i].address,addressArray[i].radius,function(location,radius){
-			addressArrayLatLng.push({"lat":parseFloat(location.lat()),"lng":parseFloat(location.lng()),"radius":radius});
-            addCircle(parseFloat(location.lat()),parseFloat(location.lng()),radius);
-        });
-	}
-    //return "hey there"
-}*/
 function getGeocodePromise(location) {
         var deferred = $.Deferred();
 
@@ -159,8 +118,3 @@ function getGeocodePromise(location) {
 
      return deferred.promise();
 }
-/*
-google.maps.Circle.prototype.contains = function(latLng) {
-  	return this.getBounds().contains(latLng) && google.maps.geometry.spherical.computeDistanceBetween(this.getCenter(), latLng) <= this.getRadius();
-}
-*/

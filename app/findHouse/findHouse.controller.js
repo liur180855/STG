@@ -11,6 +11,8 @@
         //vm.house = null;
 		//vm.houselist;
         vm.searchInfo = searchInfo;
+        vm.searchToggle = searchToggle;
+        
 		/*console.log(vm.mySearch.address1);
 		angular.element(vm.mySearch.address1).ready(function () {
 			console.log("helloworld");
@@ -25,6 +27,11 @@
         }
         resetSlider();
         */
+        //$(document).on("pagecreate" ,sliderDeclaration)
+
+        function searchToggle(){
+            vm.searchForm = !vm.searchForm;
+        }
         function sliderDeclaration(min,max) {
             //$( "#slider-range" ).css('background', 'rgb(0,255,0)');
             //$( "#slider-range .ui-slider-range" ).css('background', 'rgb(0,255,0)');
@@ -38,10 +45,8 @@
                     $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                 },
                 change: function(event, ui) {
-                   console.log( min);
-                    console.log(max);
-                    console.log(ui.values[ 0 ]);
-                    console.log(ui.values[ 1 ]);
+                    // console.log(ui.values[ 0 ]);
+                    // console.log(ui.values[ 1 ]);
                     markers.hideMarkerWithPrice(ui.values[ 0 ],ui.values[ 1 ]);
                 }
             });
@@ -51,6 +56,7 @@
 
 
 		function searchInfo(){
+            vm.priceRange = false;
             //directionsDisplay.setMap(null);
             sliderDeclaration(0,0);
 			console.log("searchInfo");
@@ -100,14 +106,17 @@
                 function findHouseRequest(){
                     dataService.FindHouse().then(function (doc) {
                         var origin =  new google.maps.LatLng(circles[0].getCenter().lat(), circles[0].getCenter().lng())
+                        setMapBound(circles[0]);
                         markers.addOriginMarker(origin);
                         for (var i = 0; i < doc.length; i++) {
+                            console.log(checkMarkerInCircle(circles[0],doc[i].location));
+                            //console.log(doc[i].location);
+                            //console.log(circles[0].getCenter());
                             if(checkMarkerInCircle(circles[0],doc[i].location)){
-                                //console.log(doc[i]);
+                                console.log(doc[i]);
 
-                                markers.addMarker(origin,doc[i].location,doc[i],doc[i].price);
+                                markers.addMarker(origin,doc[i].location,doc[i]);
                             }
-                            
                         }
                         max = markers.findMax(max);
                         min = markers.findMin(min);

@@ -1,8 +1,44 @@
+<div id="menuOnMapWrapper">
+<button class="btn btn-default" ng-click="vm.searchToggle()">Search Filter<span class="caret"></span></button>
 
-<head>
-</head>
+<!-- <div class="dropdown">
+    <button class="btn btn-default" type="button" id="menu1" data-toggle="dropdown">Search
+        <span class="caret"></span>
+    </button>
+        <ul class="dropdown-menu" role="menu">
+            <li> -->
+            <div  ng-hide="vm.searchForm" ng-init="vm.searchForm = vm.searchForm || true">
+                <div id = "searchForm">
+                    <label for="mySearch.address1">School/work/other important location</label>
+                    <input class="form-control" type="text" id="mySearch.address1" class="form-control" ng-model="vm.mySearch.address1" ng-init="vm.mySearch.address1 = vm.mySearch.address1 || 'richardson, tx'"/>
+                    <label for="mySearch.mile1">Maximum distance away</label>
+                    <select class="form-control" ng-init="vm.mySearch.mile1 = vm.mySearch.mile1 || '30'" ng-model="vm.mySearch.mile1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="30">30</option>
+                    </select>
 
-<div style="width:300px;float: left; padding-left: 15px; padding-right: 15px;">
+                
+                
+                    <button class="btn btn-primary" ng-click="vm.searchInfo()">Search</button>
+                    <br> 
+                    <div  ng-hide="vm.priceRange" ng-init="vm.priceRange = vm.priceRange || true">
+                        <p>
+                            <label for="amount">Price range:</label>
+                            <input type="text" id="amount"  readonly style="border:0; color:#f6931f;">
+                        </p>
+                        <div id="slider-range"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- </li>
+        </ul>
+</div> -->
+                
+<!-- <div style="width:300px;float: left; padding-left: 15px; padding-right: 15px;">
     <form method="post">
         <div class="form-group">
             <label for="mySearch.address1">School/work/other important location</label>
@@ -33,9 +69,9 @@
             <div id="slider-range"></div>
         </div>
     </form>
-</div> 
+</div> --> 
 <div id="map"></div>
-
+</div>
 
 <script src="./findHouse/googleMap.js"></script>
 <script src="./findHouse/markerClass.js"></script>

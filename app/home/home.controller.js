@@ -3,7 +3,7 @@
         .module('app')
         .controller('home.IndexController', Controller);
 
-	function Controller(dataService) {
+	function Controller(dataService, $stateParams) {
         var vm = this;
         //vm.searchInfo = searchInfo;
 		/*console.log(vm.mySearch.address1);
@@ -40,6 +40,8 @@
 				console.log("meow");
 			}
 				
+		}else if($stateParams.message){
+			vm.message=$stateParams.message;
 		}
 		
 

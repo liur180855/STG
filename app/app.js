@@ -16,7 +16,10 @@
                 templateUrl: 'home/index.html',
                 controller: 'home.IndexController',
                 controllerAs: 'vm',
-				data: { activeTab: 'home' }
+				data: { activeTab: 'home' },
+                params: {
+                    'message': null
+                }
             })
             .state('findHouse', {
                 url: '/findHouse',

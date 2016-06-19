@@ -26,8 +26,8 @@ markerClass.prototype.findMax=function(max){
 	if (this.markers.length ==0){return max;}
 	var max = this.markers[0].price;
 	for (var i = 1; i < this.markers.length; i++) {
-        if (max<this.markers[i].price){
-        	var max = this.markers[i].price;
+        if (parseInt(max)<parseInt(this.markers[i].price)){
+        	max = this.markers[i].price;
         }
     }
     return parseInt(max);
@@ -36,8 +36,8 @@ markerClass.prototype.findMin=function(min){
 	if (this.markers.length ==0){return min;}
 	var min = this.markers[0].price;
 	for (var i = 1; i < this.markers.length; i++) {
-        if (min>this.markers[i].price){
-        	var min = this.markers[i].price;
+        if (parseInt(min)>parseInt(this.markers[i].price)){
+        	min = this.markers[i].price;
         }
     }
     return parseInt(min);
@@ -60,13 +60,75 @@ markerClass.prototype.findPrice = function() {
         console.log(this.markers[i].price);
     }
 }
+
+
+markerClass.prototype.addMarker = function(origin,location,contentString) {
+    
+    calculateRoute(origin,location).then( function(response){
+        //console.log(distance,duration);
+        //console.log(contentString);
+        contentString.distance = response.routes[0].legs[0].distance.text;
+        contentString.duration = response.routes[0].legs[0].duration.text;
+        //console.log(contentString);
+        var returnResponse = {"displayRoute":response,"contentString":infoWindowContent(contentString),"location":location,"price":contentString.price};
+        // returnResponse.displayRoute = response;
+        // returnResponse.contentString = infoWindowContent(contentString);
+        return returnResponse;
+        //console.log(this.addMarker2());
+        //this.addMarker1(output,location,price,displayRoute,price);
+
+    }).then(this.addMarker1).then(this.markers.push(marker));
+    
+    
+}
+
+markerClass.prototype.addMarker2 = function(){
+    console.log("this");
+}
+
+markerClass.prototype.addMarker1 = function(response){
+    //console.log(response.price)
+    //output,location,price,displayRoute
+    var infowindowOpen = true;
+    var infowindow = new google.maps.InfoWindow({
+        content: response.contentString
+    });
+    var marker = new google.maps.Marker({
+        position: response.location,
+        map: map,
+        icon: HOUSEICON
+    });
+
+    marker.price = response.price;
+
+    marker.addListener('click', function() {
+        //$('#myTable').find('tbody:last').append('<tr>...</tr><tr>...</tr>');
+        //calculateRoute(origin,location);
+        directionsDisplay.setDirections(response.displayRoute);
+        infowindow.open(map, marker);
+        infowindowOpen = false;
+    });
+    marker.addListener('mouseover', function() {
+        infowindow.open(map, marker);
+    });
+    marker.addListener('mouseout', function() {
+        if(infowindowOpen){
+            infowindow.close(map, marker);
+        }
+    });
+    infowindow.addListener('closeclick',function() {
+        infowindowOpen = true;
+    });
+    return marker;
+    
+}
+/*
 markerClass.prototype.addMarker = function(origin,location,contentString,price) {
     var infowindowOpen = true;
     var output;
     var infowindow;
     var displayRoute;
     //var displayRoute;
-    console.log
     calculateRoute(origin,location).then( function(response){
         //console.log(distance,duration);
         //console.log(contentString);
@@ -113,7 +175,7 @@ markerClass.prototype.addMarker = function(origin,location,contentString,price) 
     });
     this.markers.push(marker);
 }
-
+*/
 markerClass.prototype.addOriginMarker = function(latLngArray) {
 
 	var marker = new google.maps.Marker({

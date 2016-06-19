@@ -19,7 +19,6 @@ console.log(config.smtp);
 var emailSenderModule = require('emailSender');
 var emailSender = new emailSenderModule(config.smtp);
 
-
 //emailSender.sendMail(emailSender.createMailOptions(config.from,'liur180855@gmail.com',config.successSubject,null, config.successMessage));
 
 
@@ -35,11 +34,6 @@ var publicConfig = {
 var gmAPI = new GoogleMapsAPI(publicConfig);
 
 // geocode API
-
-
-
-
-
 
 app.use(bodyParser.json());
 
@@ -94,21 +88,21 @@ app.post('/postHouseInfo', function(req,res){
 	};
     geocodeParams.address = req.body.address;
     gmAPI.geocode(geocodeParams, function(err, result){
-        console.log(req.body);
-        console.log(result.results[0].geometry.location);
+    	// console.log("debug");
+    	// console.log(result.length);
+     //    console.log(result.results[0]);
+     //    console.log(result.results[1]);
         var house = req.body;
         house.location = result.results[0].geometry.location;
-        console.log(house);
-
+		//console.log("debug end");
         dbConnectorInstance.insertUnverify(req.body,"HouseDB",function(doc){
-	    	console.log(doc._id);
-	    	console.log(doc.email);
+	    	// console.log(doc._id);
+	    	// console.log(doc.email);
 	    	emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, emailSender.createVerifyMessage(doc._id,"delHouseInfo")));
 			//emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, config.successMessage));
-			res.json(doc);
+			res.json("please check your email to verified");
 	    });
     });
-    console.log(geocodeParams);
 });
 
 app.post('/postTenantInfo', function(req,res){
@@ -118,8 +112,9 @@ app.post('/postTenantInfo', function(req,res){
     	console.log(doc.email);
     	emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, emailSender.createVerifyMessage(doc._id,"delTenantInfo")));
 		//emailSender.sendMail(emailSender.createMailOptions(config.from,doc.email,config.successSubject,null, config.successMessage));
-
-		res.json(doc);
+		// console.log('/postTenantInfo');
+		// console.log(doc);
+		res.json("please check your email to verified");
     });
 });
 

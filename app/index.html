@@ -14,36 +14,33 @@
       <script src="//code.jquery.com/jquery-1.10.2.js"></script>
       <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     	<link href="app-content/app.css" rel="stylesheet" />
     	<script src="language.js"></script>
-
-
     </head>
 <body>
-    <!-- header -->
-    <nav class="navbar navbar-default">
-        <div class="navbar-header pull-left">
-          <!-- <a class="pull-left" href="#/"><img src="image/logo.png"></a> -->
+    <nav class="navbar navbar-default ">
+        <div class="navbar-header pull-left ">
             <a class="navbar-brand" ui-sref="home" >
-                <img src="image/logo.png">
+                <img id = "logo">
             </a>
         </div>
 		
-        <ul class="nav nav-tabs navbar-header pull-right">
+        <ul class="nav nav-pills navbar-header pull-right">
             <!-- <li ng-class="{active: activeTab === 'home'}"><a ui-sref="home"><span class="glyphicon glyphicon-home"></span></a></li> -->
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 				<span class="glyphicon glyphicon-search"></span></a>
 				<ul class="dropdown-menu">
-					<li ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">singleHouse</a></li>
-					<li ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage">tenantInfoPage</a></li>
+					<li class = "menuStyle" ng-class="{active: activeTab === 'findHouse'}"><a ui-sref="findHouse">singleHouse</a></li>
+					<li class = "menuStyle" ng-class="{active: activeTab === 'tenantInfoPage'}"><a ui-sref="tenantInfoPage">tenantInfoPage</a></li>
 				</ul>
 			</li>
 			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">
 				<span class="glyphicon glyphicon-pencil"></span></a>
 				<ul class="dropdown-menu">
-					<li ng-class="{active: activeTab === 'singleHouse'}"><a ui-sref="singleHouse">singlehouse</a></li>
-					<li ng-class="{active: activeTab === 'wholeHouse'}"><a ui-sref="wholeHouse">wholeHouse</a></li>
-					<li ng-class="{active: activeTab === 'postTenantInfo'}"><a ui-sref="postTenantInfo">postTenantInfo</a></li>
+					<li class = "menuStyle" ng-class="{active: activeTab === 'singleHouse'}"><a ui-sref="singleHouse">singlehouse</a></li>
+					<li class = "menuStyle" ng-class="{active: activeTab === 'wholeHouse'}"><a ui-sref="wholeHouse">wholeHouse</a></li>
+					<li class = "menuStyle" ng-class="{active: activeTab === 'postTenantInfo'}"><a ui-sref="postTenantInfo">postTenantInfo</a></li>
 				</ul>
 			</li>
         </ul>

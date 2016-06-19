@@ -35,12 +35,13 @@
 			<option value="5">5</option>
 			<option value="6">6+</option>
 		</select>
-		<select class="form-control" ng-model="vm.house.bathroom">
+		<select class="form-control" ng-model="vm.house.bathroom" required>
 			<option value="" disabled="">bathroom</option>
 			<option value="private">private</option>
 			<option value="shareWithAnother">shareWithAnother</option>
 			<option value="shareWithThreePlus">shareWithThreePlus</option>
 		</select>
+		
         <label for="furnished"><input type="checkbox" id="house.furnished" ng-model="vm.house.furnished"> furnished</label>
         <input class="form-control" type="text" datepicker="" ng-model="vm.fromdt" placeholder="fromdt" required/>
 		<input  class="form-control" type="text" datepicker="" ng-model="vm.todt" ng-disabled="vm.todtlongterm == true" placeholder="todt" required/>
