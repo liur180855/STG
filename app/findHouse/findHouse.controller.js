@@ -115,7 +115,7 @@
                             if(checkMarkerInCircle(circles[0],doc[i].location)){
                                 console.log(doc[i]);
 
-                                markers.addMarker(origin,doc[i].location,doc[i]);
+                                markers.addMarker1(origin,doc[i].location,doc[i]);
                             }
                         }
                         max = markers.findMax(max);

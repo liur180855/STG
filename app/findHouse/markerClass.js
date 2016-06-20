@@ -1,7 +1,24 @@
 function markerClass(){
 	this.markers = [];
 	this.originMarker = new google.maps.Marker();
+    // this.pushMarker = function(marker){
+    //     console.log("i am here");
+    //     console.log(this);
+    //     this.markers.push(marker)
+    // }
 }
+
+markerClass.prototype.pushMarker=function(marker){
+    console.log("i am here");
+    console.log(this);
+    this.markers.push(marker)
+}
+
+// function pushMarker(marker){
+//     console.log("i am here");
+//     console.log(this);
+//     this.markers.push(marker);
+// }
 
 markerClass.prototype.setMapOnAll=function(emptyOut){
 	for (var i = 0; i < this.markers.length; i++) {
@@ -32,6 +49,7 @@ markerClass.prototype.findMax=function(max){
     }
     return parseInt(max);
 }
+
 markerClass.prototype.findMin=function(min){
 	if (this.markers.length ==0){return min;}
 	var min = this.markers[0].price;
@@ -42,6 +60,7 @@ markerClass.prototype.findMin=function(min){
     }
     return parseInt(min);
 }
+
 markerClass.prototype.hideMarkerWithPrice = function(min,max) {
 	if (this.markers.length ==0){return;}
 	for (var i = 0; i < this.markers.length; i++) {
@@ -62,7 +81,7 @@ markerClass.prototype.findPrice = function() {
 }
 
 
-markerClass.prototype.addMarker = function(origin,location,contentString) {
+markerClass.prototype.addMarker1 = function(origin,location,contentString) {
     
     calculateRoute(origin,location).then( function(response){
         //console.log(distance,duration);
@@ -77,16 +96,14 @@ markerClass.prototype.addMarker = function(origin,location,contentString) {
         //console.log(this.addMarker2());
         //this.addMarker1(output,location,price,displayRoute,price);
 
-    }).then(this.addMarker1).then(this.markers.push(marker));
+    }).then(this.addMarker2)
+    .then(this.pushMarker.bind(this));
     
     
 }
 
-markerClass.prototype.addMarker2 = function(){
-    console.log("this");
-}
 
-markerClass.prototype.addMarker1 = function(response){
+markerClass.prototype.addMarker2 = function(response){
     //console.log(response.price)
     //output,location,price,displayRoute
     var infowindowOpen = true;
