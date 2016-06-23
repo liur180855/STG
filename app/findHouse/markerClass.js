@@ -8,6 +8,11 @@ function markerClass(){
     // }
 }
 
+markerClass.prototype.getMarkersSize=function(){
+    return (this.markers.length);
+}
+
+
 markerClass.prototype.pushMarker=function(marker){
     console.log("i am here");
     console.log(this);

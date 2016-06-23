@@ -8,6 +8,7 @@
         var markers = new markerClass();
         var min = 0;
         var max = 0;
+        var markerSize=0;
         //vm.house = null;
 		//vm.houselist;
         vm.searchInfo = searchInfo;
@@ -109,28 +110,71 @@
                         setMapBound(circles[0]);
                         markers.addOriginMarker(origin);
                         for (var i = 0; i < doc.length; i++) {
-                            console.log(checkMarkerInCircle(circles[0],doc[i].location));
+                            //console.log(checkMarkerInCircle(circles[0],doc[i].location));
                             //console.log(doc[i].location);
                             //console.log(circles[0].getCenter());
                             if(checkMarkerInCircle(circles[0],doc[i].location)){
-                                console.log(doc[i]);
+                                //console.log(doc[i]);
 
                                 markers.addMarker1(origin,doc[i].location,doc[i]);
                             }
                         }
+                        markerSize = markers.getMarkersSize();
+                        checkFinishedAddMarkers();
+                        /*
                         max = markers.findMax(max);
                         min = markers.findMin(min);
-                        console.log(min);
-                        console.log(max);
+                        //console.log(min);
+                        //console.log(max);
                         //markers.hideMarkerWithPrice(min,max);
                         //resetSlider();
                         sliderDeclaration(min,max);
+                        */
                         //calculateAndDisplayRoute(origin,"2617 lawndale dr plano tx");
 
                         //console.log(doc);
                     });
-
                 }
+
+                    function checkFinishedAddMarkers() {
+                        if ( typeof this.counter == 'undefined' ) {
+                            // It has not... perform the initialization
+                            this.counter = 0;
+                        }
+                        console.log(markerSize);
+                        console.log(markers.getMarkersSize());
+                        markerSize = markers.getMarkersSize();
+                        
+
+                        if(markerSize==0){
+                            this.counter++;
+                            console.log(this.counter);
+
+                            
+                            if (this.counter>5){
+                                delete this.counter;
+                                return;
+                            }else{
+                                setTimeout( checkFinishedAddMarkers, 1000 );
+                            }
+
+                        } else if ( markers.getMarkersSize() ==markerSize) {
+                            delete this.counter;
+                            reinitializedSlider();
+                            console.log(markers.getMarkersSize());
+                        } else {
+                            setTimeout( checkFinishedAddMarkers, 1000 );
+                        }
+                    }
+                    function reinitializedSlider(){
+                        max = markers.findMax(max);
+                        min = markers.findMin(min);
+                        //console.log(min);
+                        //console.log(max);
+                        //markers.hideMarkerWithPrice(min,max);
+                        //resetSlider();
+                        sliderDeclaration(min,max);
+                    }
                 /*
                 function promise(addressArray){
                     return new Promise(function(resolve, reject) {

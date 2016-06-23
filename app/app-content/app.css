@@ -1,7 +1,30 @@
 @import url('http://getbootstrap.com/2.3.2/assets/css/bootstrap.css');
+.fadein,
+.fadeout {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+}
 
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+  display: block !important;
+}
 
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+  display: block !important;
+}
 
+.ng-hide {
+  height: 0;
+  width: 1;
+  top:-400px;
+  left: 200px;
+}
 /*
 .dropdown:hover .dropdown-menu {
     display: block;
@@ -49,6 +72,7 @@
 }
 
 #searchForm{
+    transition: all linear 0.5s;
     width:300px;
     float: left; 
     padding-left: 15px; 
@@ -92,6 +116,10 @@ nav.navbar {
     #logo{
         content:url("logosmall.png");
     }
+    #homePageImg{
+        content:url("dallas.jpg"); 
+        max-width: 100%;height: auto;
+    }
 
 }
 
@@ -103,6 +131,10 @@ nav.navbar {
     #logo{
         content:url("logo.png");
     }
+    #homePageImg{
+        content:url("college_station_b.jpg"); 
+        max-width: 100%;height: auto;
+    }
 }
 
 @media only screen and (min-width: 700px) {
@@ -112,11 +144,15 @@ nav.navbar {
 	}
 }
 
-@media only screen and (min-width: 900) {
+@media only screen and (min-width: 900px) {
 
     .container {
 	    width: 850px;
 	}
+    #homePageImg{
+        content:url("dallas2.jpg"); 
+        max-width: 100%;height: auto;
+    }
 }
 .container {
     margin-right: auto;
