@@ -33,7 +33,6 @@ markerClass.prototype.setMapOnAll=function(emptyOut){
 
 markerClass.prototype.clearMarkers = function() {
     this.setMapOnAll(null);
-    
 }
 
 // Deletes all markers in the array by removing references to them.

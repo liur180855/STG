@@ -52,7 +52,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/getTenantInfo',function(req,res){
-	console.log("I received a GET request");
+	console.log("I received a getTenantInfo request");
 	dbConnectorInstance.findTenantDB(function(docs){
 		docs = clearSensetiveInfo(docs);
     	res.json(docs);
@@ -69,7 +69,7 @@ function clearSensetiveInfo(docs){
 }
 
 app.get('/findHouse',function(req,res){
-    console.log("I received a GET request");
+    console.log("I received a findHouse request");
     dbConnectorInstance.findAllHouse(function(docs){
     	docs = clearSensetiveInfo(docs);
     	res.json(docs);
@@ -106,6 +106,7 @@ app.post('/postHouseInfo', function(req,res){
 });
 
 app.post('/postTenantInfo', function(req,res){
+	console.log('/postTenantInfo');
     //console.log(req.body);
     dbConnectorInstance.insertUnverify(req.body,"tenantDB",function(doc){
     	console.log(doc._id);
