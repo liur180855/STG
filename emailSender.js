@@ -56,8 +56,8 @@ emailSender.prototype.createMailOptions = function(from, to, subject, text, body
 
 emailSender.prototype.createVerifyMessage = function(id,operation){
     console.log(id)
-    var message = '<p>http://localhost:3000/app/#/home?operation=verifyInfo&verificationCode='+ id+'</p>'+
-    '<p>http://localhost:3000/app/#/home?operation='+ operation+'&verificationCode='+ id+'</p>';
+    var message = '<p>http://dfwroomy.com/app/#/home?operation=verifyInfo&verificationCode='+ id+'</p>'+
+    '<p>http://dfwroomy.com/app/#/home?operation='+ operation+'&verificationCode='+ id+'</p>';
     console.log(message);
     return message;
 };
