@@ -72,6 +72,7 @@ app.get('/findHouse',function(req,res){
     console.log("I received a findHouse request");
     dbConnectorInstance.findAllHouse(function(docs){
     	docs = clearSensetiveInfo(docs);
+    	console.log("returning findHouse docs");
     	res.json(docs);
     });
 });
